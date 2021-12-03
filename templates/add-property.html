@@ -30,7 +30,7 @@
 
         <!-- Add property page start -->
         <div class="add-property-page pt-130">
-            <form action="#">
+            <form action="/add-property" method="post">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -47,19 +47,19 @@
                                             <div class="col-lg-9 col-md-7 col-12">
                                                 <div class="input-file">
                                                     <label>Property Title</label>
-                                                    <input type="text" placeholder="Enter your title here">
+                                                    <input type="text" name="title" placeholder="Enter your title here">
                                                 </div>
                                             </div>
                                             <div class="col-lg-3 col-md-5 col-12">
                                                 <div class="input-file">
                                                     <label>Price</label>
-                                                    <input type="text" placeholder="Price $">
+                                                    <input type="text" name="price" placeholder="Price $">
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-12">
                                                 <div class="information-text">
                                                     <label>Property Text</label>
-                                                    <textarea placeholder="Write here"></textarea>
+                                                    <textarea name="desc" placeholder="Write here"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -77,28 +77,27 @@
                                     <div class="row">
                                         <div class="col-md-6 col-12">
                                             <div class="input-file">
-                                                <label>Location</label>
-                                                <select class="selectpicker" title="Location" data-hide-disabled="true" data-live-search="true">
-                                                    <optgroup disabled="disabled" label="disabled">
+                                                <label>City</label>
+                                                <select class="selectpicker" name="city" title="City" data-hide-disabled="true" data-live-search="true">
+                                                    <!-- <optgroup disabled="disabled" label="disabled">
                                                         <option>Hidden</option>
-                                                    </optgroup>
-                                                    <optgroup label="Australia">
-                                                        <option>Sydney</option>
-                                                        <option>Melbourne</option>
-                                                        <option>Cairns</option>
-                                                    </optgroup>
-                                                    <optgroup label="USA">
+                                                    </optgroup> -->
+                                                    <!-- <optgroup label="Pakistan"> -->
+                                                    <option value="karachi">Karachi</option>
+                                                    <option value="islamabad">Islamabad</option>
+                                                    <option value="lahore">Lahore</option>
+                                                    <!-- </optgroup> -->
+                                                    <!-- <optgroup label="USA">
                                                         <option>South Carolina</option>
                                                         <option>Florida</option>
                                                         <option>Rhode Island</option>
-                                                    </optgroup>
+                                                    </optgroup> -->
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="input-file">
-                                                <label>Sub-Location</label>
-                                                <select class="selectpicker" title="Sub - Location" data-hide-disabled="true" data-live-search="true">
+                                                <!-- <select class="selectpicker" title="Sub - Location" data-hide-disabled="true" data-live-search="true">
                                                     <optgroup disabled="disabled" label="disabled">
                                                         <option>Hidden</option>
                                                     </optgroup>
@@ -112,31 +111,36 @@
                                                         <option>St. Petersburg</option>
                                                         <option>Newport</option>
                                                     </optgroup>
-                                                </select>
+                                                </select> -->
+
+                                                <div class="input-file">
+                                                    <label>Address</label>
+                                                    <input type="text" name="address" placeholder="Address">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="input-file">
                                                 <label>Property type</label>
-                                                <select class="selectpicker" title="Property type" data-hide-disabled="true">
-                                                    <option>Property type 1</option>
-                                                    <option>Property type 2</option>
-                                                    <option>Property type 3</option>
-                                                    <option>Property type 4</option>
-                                                    <option>Property type 5</option>
+                                                <select class="selectpicker" name="type" title="Property type" data-hide-disabled="true">
+                                                    <option value="residential">Residential Property</option>
+                                                    <option value="commercial">Commercial Property</option>
+                                                    <option value="industrial">Industrial Property</option>
+                                                    <option value="vacation">Vacation Property</option>
+                                                    <option value="special">Special Purpose Property</option>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="input-file">
                                                 <label>Status</label>
-                                                <select class="selectpicker" title="Sale" data-hide-disabled="true">
-                                                    <option>sale 1</option>
-                                                    <option>sale 2</option>
-                                                    <option>sale 3</option>
+                                                <select class="selectpicker" name="status" title="Sale" data-hide-disabled="true">
+                                                    <option>sale</option>
+                                                    <option>rent</option>
+                                                    <!-- <option>sale 3</option>
                                                     <option>sale 4</option>
                                                     <option>sale 5</option>
-                                                    <option>sale 6</option>
+                                                    <option>sale 6</option> -->
                                              </select>
                                             </div>
                                         </div>
@@ -144,51 +148,51 @@
                                     <div class="row">
                                         <div class="col-lg-3 col-md-6 col-12">
                                             <div class="input-file">
-                                                <label>No. of Bathroom</label>
-                                                <select class="selectpicker" title="No. of Beadrooms" data-hide-disabled="true">
-                                                    <optgroup  label="1">
-                                                        <option label="1">1 Beadrooms</option>
-                                                        <option>2 Beadrooms</option>
-                                                        <option>3 Beadrooms</option>
-                                                        <option>4 Beadrooms</option>
-                                                        <option>5 Beadrooms</option>
-                                                    </optgroup>
+                                                <label>No. of Bedrooms</label>
+                                                <select class="selectpicker" name="bedroom" title="No. of Bedrooms" data-hide-disabled="true">
+                                                    <!-- <optgroup  label="1"> -->
+                                                        <option value="1">1 Bedroom</option>
+                                                        <option value="2">2 Bedrooms</option>
+                                                        <option value="3">3 Bedrooms</option>
+                                                        <option value="4">4 Bedrooms</option>
+                                                        <option  value="5">5 Bedrooms</option>
+                                                    <!-- </optgroup> -->
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-12">
                                             <div class="input-file">
-                                                <label>No. of Bathroom</label>
-                                                <select class="selectpicker" title="No. of Beadrooms" data-hide-disabled="true">
-                                                    <optgroup  label="2">
-                                                        <option label="1">2 Beadrooms</option>
-                                                        <option>2 Beadrooms</option>
-                                                        <option>3 Beadrooms</option>
-                                                        <option>4 Beadrooms</option>
-                                                        <option>5 Beadrooms</option>
-                                                    </optgroup>
+                                                <label>No. of Bathrooms</label>
+                                                <select class="selectpicker" name="bathroom" title="No. of Bathrooms" data-hide-disabled="true">
+                                                    <!-- <optgroup  label="2"> -->
+                                                        <option value="1">1 Bathroom</option>
+                                                        <option value="2">2 Bathrooms</option>
+                                                        <option value="3">3 Bathrooms</option>
+                                                        <option value="4">4 Bathrooms</option>
+                                                        <option value="5">5 Bathrooms</option>
+                                                    <!-- </optgroup> -->
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-12">
                                             <div class="input-file">
-                                                <label>No. of Garage</label>
-                                                <select class="selectpicker" title="No of Garage" data-hide-disabled="true">
-                                                    <optgroup label="No. of Garage">
-                                                        <option>Garage 1</option>
-                                                        <option>Garage 2</option>
-                                                        <option>Garage 3</option>
-                                                        <option>Garage 4</option>
-                                                        <option>Garage 5</option>
-                                                        <option>Garage 6</option>
-                                                   </optgroup>
+                                                <label>No. of Kitchens</label>
+                                                <select class="selectpicker" name="kitchen" title="No of Kitchens" data-hide-disabled="true">
+                                                    <!-- <optgroup label="No. of Kitchens"> -->
+                                                        <option value="1">1 Kitchen</option>
+                                                        <option value="2">2 Kitchen</option>
+                                                        <option value="3">3 Kitchen</option>
+                                                        <option value="4">4 Kitchen</option>
+                                                        <option value="5">5 Kitchen</option>
+                                                        <option value="6">6 Kitchen</option>
+                                                   <!-- </optgroup> -->
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-12">
                                             <div class="input-file">
                                                 <label>Area (quft)</label>
-                                                <input type="text" name="max-area" placeholder="Area (quft)">
+                                                <input type="text" name="area" placeholder="Area (quft)">
                                             </div>
                                         </div>
                                     </div>
@@ -208,7 +212,7 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="video-upload-inner">
+                                <!-- <div class="video-upload-inner">
                                     <div class="information-title">
                                         <h5>Video Presentation</h5>
                                     </div>
@@ -217,7 +221,7 @@
                                             <span>Add Video</span> <input type="file">
                                         </label>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="add-property-box step-4">
                                 <div class="row">
@@ -230,53 +234,53 @@
                                         <div class="features-box">
                                             <div class="row">
                                                 <div class="col-md-6 col-12">
-                                                    <div class="feature-check box1">
+                                                    <!-- <div class="feature-check box1">
                                                         <input id="remember-1" type="checkbox">
                                                         <label for="remember-1">Air Conditioning</label>
-                                                    </div>
-                                                    <div class="feature-check box2">
+                                                    </div> -->
+                                                    <!-- <div class="feature-check box2">
                                                         <input id="remember-2" type="checkbox">
                                                         <label for="remember-2">Bedding</label>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="feature-check box3">
-                                                        <input id="remember-3" type="checkbox">
+                                                        <input id="remember-3" name="balcony" type="checkbox">
                                                         <label for="remember-3">Balcony</label>
                                                     </div>
-                                                    <div class="feature-check box4">
+                                                    <!-- <div class="feature-check box4">
                                                         <input id="remember-4" type="checkbox">
                                                         <label for="remember-4">Cable TV</label>
-                                                    </div>
-                                                    <div class="feature-check box5">
+                                                    </div> -->
+                                                    <!-- <div class="feature-check box5">
                                                         <input id="remember-5" type="checkbox">
                                                         <label for="remember-5">Internet</label>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                 <div class="col-md-6 col-12 pd-left">
                                                     <div class="feature-check box6">
-                                                        <input id="remember-6" type="checkbox">
+                                                        <input id="remember-6" name="parking" type="checkbox">
                                                         <label for="remember-6">Parking</label>
                                                     </div>
                                                     <div class="feature-check box7">
-                                                        <input id="remember-7" type="checkbox">
+                                                        <input id="remember-7" name="lift" type="checkbox">
                                                         <label for="remember-7">Lift</label>
                                                     </div>
                                                     <div class="feature-check box8">
-                                                        <input id="remember-8" type="checkbox">
+                                                        <input id="remember-8" name="pool" type="checkbox">
                                                         <label for="remember-8">Pool</label>
                                                     </div>
-                                                    <div class="feature-check box9">
+                                                    <!-- <div class="feature-check box9">
                                                         <input id="remember-9" type="checkbox">
                                                         <label for="remember-9">Dishwasher</label>
                                                     </div>
                                                     <div class="feature-check box10">
                                                         <input id="remember-10" type="checkbox">
                                                         <label for="remember-10">Toaster</label>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-8 col-md-7 col-12">
+                                    <!-- <div class="col-lg-8 col-md-7 col-12">
                                         <div class="place-map">
                                             <div class="information-title">
                                                 <h5>Place on Map</h5>
@@ -285,7 +289,7 @@
                                                 <div id="googleMap-2" style="width:100%;height:365px;"></div>
                                             </div>
                                         </div>
-                                   </div>
+                                   </div> -->
                                 </div>
                             </div>
                             <div class="add-property-submit">

@@ -79,11 +79,81 @@ def blog():
 
 @app.route("/properties")
 def properties():
-    return render_template("properties.html")
+    properties = db.properties.find()
+    # return str(properties)
+    lists = []
+    # for loop
+    for i in properties:
+        i.update({"_id": str(i["_id"])})
+        lists.append(i)
+    return render_template("properties.html", properties=lists)
 
-@app.route("/add-property")
+@app.route("/single-properties/<propertyid>")
+def single_properties(propertyid):
+    query = {"_id": ObjectId(propertyid)} 
+    property = db.properties.find_one(query)    
+    pictures = property["pictures"]
+    return render_template("single-properties.html", property=property,pics=pictures)
+
+@app.route("/add-property", methods=['GET','POST'])
 def add_property():
-    return render_template("add-property.html")
+    if request.method == 'POST':
+        title = request.form.get("title")
+        price = request.form.get("price")
+        desc = request.form.get("desc")
+        city = request.form.get("city")
+        address = request.form.get("address")
+        type = request.form.get("type")
+        status = request.form.get("status")
+        bedroom = request.form.get("bedroom")
+        bathroom = request.form.get("bathroom")
+        kitchen = request.form.get("kitchen")
+        area = request.form.get("area")
+        pics = request.form.get("")
+        balcony = False
+        parking = False
+        lift = False
+        pool = False
+        if request.form.get("balcony") == "on":
+            balcony = True
+        if request.form.get("parking") == "on":
+            parking = True
+        if request.form.get("lift") == "on":
+            lift = True
+        if request.form.get("pool") == "on":
+            pool = True
+        print(title)
+        print(price)
+        print(desc)
+        print(city)
+        print(address)
+        print(type)
+        print(status)
+        print(bedroom)
+        print(bathroom)
+        print(kitchen)
+        print(area)
+        newProperty={
+            "title":title,
+            "price":float(price),
+            "desc":desc,
+            "city":city,
+            "address":address,
+            "type":type,
+            "status":status,
+            "bedroom":int(bedroom),
+            "bathroom":int(bathroom),
+            "kitchen":int(kitchen),
+            "area":int(area),
+            "balcony":balcony, 
+            "parking":parking, 
+            "lift":lift,
+            "pool":pool
+        }
+        db.properties.insert_one(newProperty)
+        return "True"
+    else:
+        return render_template("add-property.html")
 
 @app.route("/agent")
 def agent():
