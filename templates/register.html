@@ -1,0 +1,112 @@
+        
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>Haven | Home</title>
+{% endblock %}
+{% block content %}
+
+        <!--Breadcrumbs start-->
+        <div class="breadcrumbs overlay-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcrumbs-inner">
+                            <div class="breadcrumbs-title text-center">
+                                <h1>Register</h1>
+                            </div>
+                            <div class="breadcrumbs-menu">
+                                <ul>
+                                    <li><a href="index.html">Home /</a></li>
+                                    <li>Register</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Breadcrumbs end-->
+
+        <!--Register page inner start-->
+        <div class="register-page-inner ptb-100 bg-1">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="register-page-form">
+                            <div class="account-title">
+                                <h5>Creat an Account</h5>
+                            </div>
+                            <form action="/register" method="post">
+                                <div class="username">
+                                    <input type="text" name="username" placeholder="Username">
+                                </div>
+                                <div class="email">
+                                    <input type="text" name="email" placeholder="Email">
+                                </div>
+                                <div class="password">
+                                    <input type="password" name="password" placeholder="Password">
+                                </div>
+                                <div class="password">
+                                    <input type="password" name="conf_password" placeholder="Confirm password">
+                                </div>
+                                 <div class="agree-text">
+                                    <p>
+                                        <label>
+                                            <input type="checkbox" required> <span>I agree with your</span>
+                                        </label>
+                                    </p>
+                                </div>
+                                <div class="register">
+                                    <button type="submit">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Register page inner end-->
+
+        <!--Brand section start-->
+        <div class="brand-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="brand-list owl-carousel">
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endblock %}
