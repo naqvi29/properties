@@ -3230,6 +3230,16 @@ article blockquote {
   padding-left: 36px;
   /* text-transform: capitalize; */
 }
+.register-page-form select {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: 1px solid #dbdbdb;
+  color: #606060;
+  font-size: 13px;
+  height: 42px;
+  margin-bottom: 15px;
+  padding-left: 36px;
+  /* text-transform: capitalize; */
+}
 
 .register-page-form .username,
 .register-page-form .email,
@@ -3513,6 +3523,27 @@ article blockquote {
 .change-password .update-profile-submit {
   margin-top: 25px;
 }
+
+.delete-profile-button>button {
+  background: red none repeat scroll 0 0;
+  border: medium none;
+  color: #ffffff;
+  font-size: 16px;
+  height: 38px;
+  line-height: 38px;
+  padding: 0 20px;
+  text-transform: capitalize;
+  transition: all 0.3s ease 0s;
+}
+
+.delete-profile-button>button:hover {
+  opacity: 0.8;
+}
+
+.delete-profile-button {
+  margin-top: 10px;
+}
+
 
 /*-------------------
     31. Welcome fixd text css here

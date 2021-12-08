@@ -48,8 +48,15 @@
                                     <ul>
                                         <li><span><img src="/static/img/icon/mail.png" alt=""></span> info@haven.com</li>
                                         <li><a href="{{ url_for('agency') }}">Create Agency</a></li>
+
+                                        {% if username %}
+                                        <li><a href="#">{{username}}</a></li>
+                                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                                        <li><a href="/myaccount/{{username}}"><img src="/static/img/icon/user.png" alt=""></a></li>
+                                        {% else %}
                                         <li><a data-target="#quick-view" data-toggle="modal" href="#">Login</a></li>
                                         <li><a href="{{ url_for('register') }}">Register</a></li>
+                                        {% endif %}
                                     </ul>
                                 </div>
                                 <div class="header-search">
@@ -89,16 +96,6 @@
                                                 </ul> -->
                                             </li>
                                             <li><a href="{{ url_for('about_us') }}">About</a></li>
-                                            <li><a href="{{ url_for('blog') }}"> BLOG</a>
-                                                <!-- <ul class="dropdown_menu">
-                                                    <li><a href="blog.html">Blog pages</a></li>
-                                                    <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
-                                                    <li><a href="blog-right-sidebar.html">Blog right Sidebar</a></li>
-                                                    <li><a href="article.html">Blog details</a></li>
-                                                    <li><a href="article-left-sidebar.html">Blog details left
-                                                            sidebar</a></li>
-                                                </ul> -->
-                                            </li>
                                             <li><a href="#">pages</a>
                                                 <ul class="dropdown_menu">
                                                     <li><a href="about-us.html">About us</a></li>
@@ -179,7 +176,7 @@
                                                     </li>
                                                 </ul>
                                             </li> -->
-                                            <li><a href="{{ url_for('contact') }}"> Contact</a></li>
+                                            <li><a href="{{ url_for('contact_form') }}"> Contact</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -449,8 +446,7 @@
                                     <li><a href="/">Home</a></li>
                                     <li><a href="{{ url_for('about_us') }}">About</a></li>
                                     <li><a href="{{ url_for('services') }}">Services</a></li>
-                                    <li><a href="{{ url_for('blog') }}">Blog </a></li>
-                                    <li><a href="{{ url_for('contact') }}">Contact </a></li>
+                                    <li><a href="{{ url_for('contact_form') }}">Contact </a></li>
                                 </ul>
                             </div>
                         </div>
@@ -481,7 +477,7 @@
                         <div class="account-title">
                             <h5>Login</h5>
                         </div>
-                        <form action="/login" method="post">
+                        <form id="contact-form" action="/login" method="post">
                             <div class="username">
                                 <input type="text" name="username" placeholder="Username">
                             </div>
@@ -497,6 +493,7 @@
                             <div class="login">
                                 <button type="submit">Sign in</button>
                             </div>
+                            <p class="form-messege"></p>
                         </form>
                         <div class="login-with-another">
                             <a class="facebook" href="#"><i class="icofont icofont-social-facebook"></i> Login with

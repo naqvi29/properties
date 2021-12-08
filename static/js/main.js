@@ -335,15 +335,15 @@
   --------------------------*/
   $("#slider-range").slider({
     range: true,
-    min: 20,
-    max: 2500,
-    values: [600, 2000],
+    min: 1000,
+    max: 50000000,
+    values: [1000, 50000000],
     slide: function (event, ui) {
-      $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+      $("#amount").val("Rs " + ui.values[0] + " - Rs " + ui.values[1]);
     }
   });
-  $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-    " - $" + $("#slider-range").slider("values", 1));
+  $("#amount").val("Rs " + $("#slider-range").slider("values", 0) +
+    " - Rs " + $("#slider-range").slider("values", 1));
 
 
   /*--------------------------

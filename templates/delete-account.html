@@ -1,0 +1,134 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>Properties | Delete Account</title>
+{% endblock %}
+{% block content %}
+<!--Breadcrumbs start-->
+<div class="breadcrumbs overlay-black">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumbs-inner">
+                    <div class="breadcrumbs-title text-center">
+                        <h1>Delete account</h1>
+                    </div>
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="index.html">Home /</a></li>
+                            <li>My account</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Breadcrumbs end-->
+
+<!--My account start-->
+<div class="agent-details-page pt-130">
+    <div class="agent-details">
+        <div class="container">                 
+                
+            <div class="row change-password mt-50">
+                <div class="col-md-12">
+                    <div class="profile-title">
+                        
+                        <h5>Confirm your password to delete your account</h5>    
+                    </div>
+                </div>
+            </div>
+            <div class="row change-password">
+                <div class="col-12">
+                    <form action="/delete-account/{{id}}" class="form-row gutter-30" method="post">
+                        <div class="col-md-4 col-12">
+                            <div class="input-type">
+                                <label>password</label>
+                                <input type="password" name="password" placeholder="password">
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-12">
+                            <div class="input-type">
+                                <label>retype password</label>
+                                <input type="password" name="confirm_password" placeholder="Retype password">
+                            </div>
+                        </div>
+                        <br>
+                        
+                        <div class="col-12 mt-4">
+                            <div class="delete-profile-button">
+                                <button type="submit">Delete Account</button>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <p>This will delete your account permanently</p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+                
+            
+            
+            
+        </div>
+    </div>
+    
+    <!-- My account end-->
+
+</div>
+<!--My account end-->
+
+<!--Brand section start-->
+<div class="brand-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="brand-list owl-carousel">
+                    <div class="single-brand">
+                        <a href="#"><img src="img/brand/1.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="img/brand/2.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="img/brand/3.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="img/brand/4.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="img/brand/5.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="img/brand/1.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="img/brand/2.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="img/brand/3.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="img/brand/4.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="img/brand/5.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Brand section end-->
+<!-- script for confirmation when deleting account -->
+<script LANGUAGE="JavaScript">
+    function myFunction() {
+        var agree=confirm("Are you sure you want to delete your account permanently?");
+        if (agree)
+        return true ;
+        else
+        return false ;
+    }
+  </script>
+{% endblock %}

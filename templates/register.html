@@ -1,112 +1,196 @@
-        
 {% extends 'layout.html' %}
 
 {% block head %}
 <title>Haven | Home</title>
+<link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
+<!-- style for image uploader  -->
+<style>
+    #imageUpload {
+        display: none;
+    }
+
+    #profileImage {
+        cursor: pointer;
+    }
+
+    #profile-container {
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        border-radius: 50%;
+        margin: auto;
+        margin-bottom: 8px;
+    }
+
+    #profile-container img {
+        width: 80px;
+        height: 80px;
+    }
+</style>
 {% endblock %}
 {% block content %}
 
-        <!--Breadcrumbs start-->
-        <div class="breadcrumbs overlay-black">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="breadcrumbs-inner">
-                            <div class="breadcrumbs-title text-center">
-                                <h1>Register</h1>
-                            </div>
-                            <div class="breadcrumbs-menu">
-                                <ul>
-                                    <li><a href="index.html">Home /</a></li>
-                                    <li>Register</li>
-                                </ul>
-                            </div>
-                        </div>
+<!--Breadcrumbs start-->
+<div class="breadcrumbs overlay-black">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumbs-inner">
+                    <div class="breadcrumbs-title text-center">
+                        <h1>Register</h1>
+                    </div>
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="index.html">Home /</a></li>
+                            <li>Register</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <!--Breadcrumbs end-->
+    </div>
+</div>
+<!--Breadcrumbs end-->
 
-        <!--Register page inner start-->
-        <div class="register-page-inner ptb-100 bg-1">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-6 col-xs-12">
-                        <div class="register-page-form">
-                            <div class="account-title">
-                                <h5>Creat an Account</h5>
-                            </div>
-                            <form action="/register" method="post">
-                                <div class="username">
-                                    <input type="text" name="username" placeholder="Username">
-                                </div>
-                                <div class="email">
-                                    <input type="text" name="email" placeholder="Email">
-                                </div>
-                                <div class="password">
-                                    <input type="password" name="password" placeholder="Password">
-                                </div>
-                                <div class="password">
-                                    <input type="password" name="conf_password" placeholder="Confirm password">
-                                </div>
-                                 <div class="agree-text">
-                                    <p>
-                                        <label>
-                                            <input type="checkbox" required> <span>I agree with your</span>
-                                        </label>
-                                    </p>
-                                </div>
-                                <div class="register">
-                                    <button type="submit">Register</button>
-                                </div>
-                            </form>
+<!--Register page inner start-->
+<div class="register-page-inner ptb-100 bg-1">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-xs-12">
+                <div class="register-page-form">
+                    <div class="account-title">
+                        <h5>Become A Free Member</h5>
+                    </div>
+                    <form action="/register" method="post" enctype="multipart/form-data">
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                        <div id="profile-container">
+                            <img id="profileImage" height="50" src="/static/img/default_profile.jpg" />
                         </div>
+                        <input id="imageUpload" type="file" name="profile_pic" placeholder="Photo" capture required>
+
+                        <!-- <div class="username"> -->
+                        <div class="">
+                            <input type="text" name="fullname" placeholder="Fullname" required>
+                        </div>
+                        <!-- <div class="username"> -->
+                        <div class="">
+                            <input type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div>
+                            <input type="text"
+                                pattern="03[0-9]{2}(?!0123456)(?!1234567)(?!2345678)(?!3456789)(?!4567890)(?!0987654)(?!9876543)(?!8765432)(?!7654321)(?!6543210)([0-9])(?!\1{6})[0-9]{6}"
+                                name="phone" placeholder="Phone" required>
+                        </div>
+                        <!-- <div class="email"> -->
+                        <div class="">
+                            <input type="text" name="email" placeholder="Email">
+                        </div>
+                        <div class="">
+                            <select class="" type="text" name="city" placeholder="City" required>
+                                <option value="None" disabled selected>City</option>
+                                <option value="karachi">Karachi</option>
+                                <option value="islamabad">Islamabad</option>
+                                <option value="lahore">Lahore</option>
+                            </select>
+                        </div>
+                        <!-- <div class="password"> -->
+                        <div class="">
+                            <input type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <div class="">
+                            <input type="password" name="conf_password" placeholder="Confirm password" required>
+                        </div>
+                        <div class="">
+                            <select class="" type="text" name="type" placeholder="Signing Up as*" required>
+                                <option value="None" disabled selected>Signing Up as*</option>
+                                <optgroup label="Individual">
+                                    <option value="owner">Owner/Investor</option>
+                                    <option value="tenant">Tenant</option>
+                                </optgroup>
+                                <optgroup label="Company">
+                                    <option value="agent">Agent/Broker</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                        <div class="agree-text">
+                            <p>
+                                <label>
+                                    <input type="checkbox" required> <span>I have read and I agree to the properties.com
+                                        Terms and Conditions</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="register">
+                            <button type="submit">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Register page inner end-->
+
+<!--Brand section start-->
+<div class="brand-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="brand-list owl-carousel">
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
                     </div>
                 </div>
             </div>
         </div>
-        <!--Register page inner end-->
+    </div>
+</div>
+<!-- script for image uploader  -->
+<script>
+    $("#profileImage").click(function (e) {
+        $("#imageUpload").click();
+    });
 
-        <!--Brand section start-->
-        <div class="brand-section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="brand-list owl-carousel">
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            {% endblock %}
+    function fasterPreview(uploader) {
+        if (uploader.files && uploader.files[0]) {
+            $('#profileImage').attr('src',
+                window.URL.createObjectURL(uploader.files[0]));
+        }
+    }
+
+    $("#imageUpload").change(function () {
+        fasterPreview(this);
+    });
+</script>
+{% endblock %}

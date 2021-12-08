@@ -1,0 +1,7 @@
+message dikhana hai abhi har jaga new tab mai msg khulaega return kara wa hai har jaga.
+clients bananay hain.
+admin dashboard banana hai.
+
+message dikhane keliye form mai ye id lagado id="contact-form"
+or </form> khatam hone py 1 line pehle ye line lagado  <p class="form-messege"></p>
+iske baad tum jab bhi return karogy tu sahi show hoga bs masla ye hai ke agar koi error aya tu wo bhi show hoga bohat bara.

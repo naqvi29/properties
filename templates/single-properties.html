@@ -2,7 +2,7 @@
 {% extends 'layout.html' %}
 
 {% block head %}
-<title>Haven | Properties List Sidebar</title>
+<title>Property</title>
 {% endblock %}
 {% block content %}
 
@@ -98,7 +98,12 @@
                                                     </li>
                                                     <li>
                                                         <span class="price">
-                                                            ${{property.price}}
+                                                            Rs {{property.price}}
+                                                        </span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="price">
+                                                            {{property.floor}} Floor
                                                         </span>
                                                     </li>
                                                 </ul>
@@ -169,82 +174,56 @@
                             </div> -->
                             <div class="feedback">
                                 <div class="feedback-title">
-                                    <h5>3 Feedback</h5>
+                                    <h5>{{total_reviews}} Feedback</h5>
                                 </div>
+                                {% for review in reviews %}
                                 <div class="single-feedback mb-35 fix">
                                     <div class="feedback-img">
-                                        <img src="/static/img/feedback/1.png" alt="">
+                                        <img src="/static/img/profile/{{review.profile_pic}}" alt="">
                                     </div>
                                     <div class="feedback-desc">
                                         <div class="feedback-title">
-                                            <h6>Albert Smith</h6>
+                                            <h6>{{review.name}}</h6>
                                         </div>
                                         <p class="feedback-post">
-                                            6 hour ago
+                                            {{review.time}}
                                         </p>
-                                        <p class="review-desc">There are some business lorem ipsum dolor sit amet,
-                                            consectetur adipiscing elit, sed domod empor inc ididunt ut labore et dolore
-                                            magna aliqua. Ut enim ad minim veniam, quis nostrudt </p>
+                                        <p class="review-desc">{{review.feedback}}</p>
                                     </div>
                                 </div>
-                                <div class="single-feedback mb-35 fix">
-                                    <div class="feedback-img">
-                                        <img src="/static/img/feedback/2.png" alt="">
-                                    </div>
-                                    <div class="feedback-desc">
-                                        <div class="feedback-title">
-                                            <h6>Albert Smith</h6>
-                                            <p class="feedback-post">
-                                                6 hour ago
-                                            </p>
-                                            <p class="review-desc">There are some business lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed domod empor inc ididunt ut labore et
-                                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrudt </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="single-feedback fix">
-                                    <div class="feedback-img">
-                                        <img src="/static/img/feedback/3.png" alt="">
-                                    </div>
-                                    <div class="feedback-desc">
-                                        <div class="feedback-title">
-                                            <h6>Albert Smith</h6>
-                                            <p class="feedback-post">
-                                                6 hour ago
-                                            </p>
-                                            <p class="review-desc">There are some business lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed domod empor inc ididunt ut labore et
-                                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrudt </p>
-                                        </div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                             <div class="leave-review">
                                 <div class="review-title">
                                     <h5>Leave a Review</h5>
                                 </div>
+                                {% if username %}
                                 <div class="review-inner">
-                                    <form action="#">
-                                        <div class="form-top">
+                                    <form action="/save-review/{{property._id}}", method="post">
+                                        <!-- <div class="form-top">
                                             <div class="input-filed">
                                                 <input type="text" placeholder="Your name">
                                             </div>
                                             <div class="input-filed">
                                                 <input type="text" placeholder="Your Email">
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="form-bottom">
-                                            <div class="input-field">
+                                            <!-- <div class="input-field">
                                                 <input type="text" placeholder="Subject">
-                                            </div>
-                                            <textarea placeholder="Write here"></textarea>
+                                            </div> -->
+                                            <textarea name="review" placeholder="Write here"></textarea>
                                         </div>
                                         <div class="submit-form">
                                             <button type="submit">SUBMIT REVIEW</button>
                                         </div>
                                     </form>
                                 </div>
+                                {% else %}
+                                <div class="review-inner">
+                                    <p style="color:red;">You need to sign in first to write a review</p>
+                                </div>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
@@ -256,86 +235,99 @@
                                 </div>
                                 <div class="find_home-box">
                                     <div class="find_home-box-inner">
-                                        <form action="#">
+                                        <form action="/find-your-dream-home" method="post">
                                             <div class="find-home-cagtegory">
                                                 <div class="row">
                                                     <div class="col-lg-6">
                                                         <div class="find-home-item custom-select ">
-                                                            <select class="selectpicker" title="Location"
+                                                            <select class="selectpicker" name="city" title="City"
                                                                 data-hide-disabled="true" data-live-search="true">
-                                                                <optgroup disabled="disabled" label="disabled">
-                                                                    <option>Hidden</option>
-                                                                </optgroup>
-                                                                <optgroup label="Australia">
-                                                                    <option>Sydney</option>
-                                                                    <option>Melbourne</option>
-                                                                    <option>Cairns</option>
-                                                                </optgroup>
-                                                                <optgroup label="USA">
-                                                                    <option>South Carolina</option>
-                                                                    <option>Florida</option>
-                                                                    <option>Rhode Island</option>
-                                                                </optgroup>
+                                                                <option value="karachi">Karachi</option>
+                                                                <option value="islamabad">Islamabad</option>
+                                                                <option value="lahore">Lahore</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="find-home-item custom-select">
-                                                            <select class="selectpicker" title="Sub - Location"
+                                                            <select class="selectpicker" name="type" title="Type"
                                                                 data-hide-disabled="true" data-live-search="true">
-                                                                <optgroup disabled="disabled" label="disabled">
-                                                                    <option>Hidden</option>
-                                                                </optgroup>
-                                                                <optgroup label="Australia">
-                                                                    <option>southeastern coast</option>
-                                                                    <option>southeastern tip</option>
-                                                                    <option>northwest corner</option>
-                                                                </optgroup>
-                                                                <optgroup label="USA">
-                                                                    <option>Charleston</option>
-                                                                    <option>St. Petersburg</option>
-                                                                    <option>Newport</option>
-                                                                </optgroup>
+                                                                <option value="residential">Residential Property</option>
+                                                                <option value="commercial">Commercial Property</option>
+                                                                <option value="industrial">Industrial Property</option>
+                                                                <option value="vacation">Vacation Property</option>
+                                                                <option value="special">Special Purpose Property</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="find-home-item custom-select">
+                                                            <select class="selectpicker" name="status" title="status"
+                                                                data-hide-disabled="true" data-live-search="true">
+                                                                <option value="sale">sale</option>
+                                                                <option value="rent">rent</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="col-lg-6">
+                                                        <div class="find-home-item no-caret  custom-select">
+                                                            <select class="selectpicker" name="bedroom" title="No. of Beadrooms"
+                                                                data-hide-disabled="true">
+                                                                <option value="1">1 Bedroom</option>
+                                                                <option value="2">2 Bedrooms</option>
+                                                                <option value="3">3 Bedrooms</option>
+                                                                <option value="4">4 Bedrooms</option>
+                                                                <option  value="5">5 Bedrooms</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="find-home-item no-caret  custom-select">
+                                                            <select class="selectpicker" name="bathroom" title="No. of Bathrooms"
+                                                                data-hide-disabled="true">
+                                                                    <option value="1">1 Bathroom</option>
+                                                                    <option value="2">2 Bathrooms</option>
+                                                                    <option value="3">3 Bathrooms</option>
+                                                                    <option value="4">4 Bathrooms</option>
+                                                                    <option value="5">5 Bathrooms</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="find-home-item no-caret  custom-select">
+                                                            <select class="selectpicker" name="kitchen" title="No. of Kitchens"
+                                                                data-hide-disabled="true">
+                                                                    <option value="1">1 Kitchen</option>
+                                                                    <option value="2">2 Kitchen</option>
+                                                                    <option value="3">3 Kitchen</option>
+                                                                    <option value="4">4 Kitchen</option>
+                                                                    <option value="5">5 Kitchen</option>
+                                                                    <option value="6">6 Kitchen</option>
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="find-home-item">
-                                                            <input type="text" name="min-area"
+                                                            <input type="text" name="min_area"
                                                                 placeholder="Min area (sqft)">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="find-home-item ">
-                                                            <input type="text" name="max-area"
+                                                            <input type="text" name="max_area"
                                                                 placeholder="Max area (sqft)">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="find-home-item no-caret  custom-select">
-                                                            <select class="selectpicker" title="No. of Beadrooms"
+                                                            <select class="selectpicker" name="floor" title="Floor"
                                                                 data-hide-disabled="true">
-                                                                <optgroup label="1">
-                                                                    <option label="1">1 Beadrooms</option>
-                                                                    <option>2 Beadrooms</option>
-                                                                    <option>3 Beadrooms</option>
-                                                                    <option>4 Beadrooms</option>
-                                                                    <option>5 Beadrooms</option>
-                                                                </optgroup>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="find-home-item no-caret  custom-select">
-                                                            <select class="selectpicker" title="No. of Bathrooms"
-                                                                data-hide-disabled="true">
-                                                                <optgroup label="2">
-                                                                    <option>1 Bathrooms</option>
-                                                                    <option>2 Bathrooms</option>
-                                                                    <option>3 Bathrooms</option>
-                                                                    <option>4 Bathrooms</option>
-                                                                    <option>5 Bathrooms</option>
-                                                                </optgroup>
+                                                                    <option value="Ground">Ground Floor</option>
+                                                                    <option value="1st">First Floor</option>
+                                                                    <option value="2nd">Second Floor</option>
+                                                                    <option value="3rd">Third Floor</option>
+                                                                    <option value="4th">Fourth Floor</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -347,9 +339,9 @@
                                                             <div class="shop-filter">
                                                                 <div class="price_filter">
                                                                     <div class="price_slider_amount">
-                                                                        <input type="submit" value="price range" />
+                                                                        <input type="submit" value="" />
                                                                         <input type="text" id="amount" name="price"
-                                                                            placeholder="Add Your Price" />
+                                                                            placeholder="Add Your Price" style="width: 100%;"/>
                                                                     </div>
                                                                     <div id="slider-range"></div>
                                                                 </div>

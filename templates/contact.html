@@ -85,10 +85,13 @@
                                         <div class="contact-form-title">
                                             <h5>Leave a Message</h5>
                                         </div>
-                                        <form id="contact-form" action="https://preview.hasthemes.com/haven-preview/haven/mail.php" method="post">
-                                            <input name="con_name" type="text" placeholder="Your Name">
-                                            <input  name="con_email" type="text" placeholder="Email here">
-                                            <textarea name="con_message" placeholder="Write here"></textarea>
+                                        <form id="contact-form" action="/contact-form" method="post">
+                                            {% if username %}
+                                            {% else %}
+                                            <input name="name" type="text" placeholder="Your Name">
+                                            <input  name="email" type="text" placeholder="Email here">
+                                            {% endif %}
+                                            <textarea name="msg" placeholder="Write here"></textarea>
                                             <div class="form-submit">
                                                 <button type="submit">Submit</button>
                                             </div>
