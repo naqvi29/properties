@@ -29,6 +29,16 @@
         </div>
         <!--Breadcrumbs end-->
 
+        {% if success_msg %}
+        <!-- alert  -->
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong> {{success_msg}}.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endif %} 
+
         <!--Register page inner start-->
         <div class="register-page-inner ptb-100 bg-1">
             <div class="container">
@@ -38,7 +48,7 @@
                             <div class="account-title">
                                 <h5>Login</h5>
                             </div>
-                            <form id="contact-form" action="/login2" method="post">
+                            <form action="/login2" method="post">
                                 <div class="username">
                                     <input type="text" name="username" placeholder="Username">
                                 </div>
@@ -54,12 +64,11 @@
                                 </div>
                                 <div class="lost-password">
                                     <p><a href="#">Lost your password?</a></p>
-                                </div>
+                                </div>                        
+                                <div class="msg" style="color: red;">{{ msg }}</div>
                                 <div class="login">
                                     <button type="submit">Sign in</button>
                                 </div>
-                                
-                                <p class="form-messege"></p>
                             </form>
                             <div class="login-with-another">
                                 <a class="facebook" href="#"><i class="icofont icofont-social-facebook"></i> Login with Facebook</a>

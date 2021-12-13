@@ -27,6 +27,15 @@
             </div>
         </div>
         <!--Breadcrumbs end-->
+        {% if msg %}
+        <!-- alert  -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Oops!</strong> {{msg}}.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endif %}  
 
         <!-- Add property page start -->
         <div class="add-property-page pt-130">
@@ -315,7 +324,7 @@
                                 </div>
                             </div>
                             <div class="add-property-submit">
-                                <button type="submit">ADD PRPPERTY</button>
+                                <button type="submit">ADD PROPERTY</button>
                             </div>
                         </div>
                     </div>

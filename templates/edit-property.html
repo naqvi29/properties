@@ -1,0 +1,150 @@
+{% extends 'admin-dashboard-layout.html' %}
+
+{% block head %}
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Super-Admin | Edit Propertes</title>
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/static/AdminLTE-master/plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="/static/AdminLTE-master/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="/static/AdminLTE-master/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="/static/AdminLTE-master/plugins/jqvmap/jqvmap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="/static/AdminLTE-master/dist/css/adminlte.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="/static/AdminLTE-master/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="/static/AdminLTE-master/plugins/daterangepicker/daterangepicker.css">
+  <!-- summernote -->
+  <link rel="stylesheet" href="/static/AdminLTE-master/plugins/summernote/summernote-bs4.min.css">
+{% endblock %}
+
+{% block header %}Edit Properties{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+<form action="/properties/customers/{{id}}" method="post">
+    <div class="mb-3">
+      <label for="exampleInputfirstname1" class="form-label">Title</label>
+      <input type="text" name="title" class="form-control" id="exampleInputfirstname1" aria-describedby="firstnameHelp" value="{{ properties.title }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputlastname1" class="form-label">Price</label>
+      <input type="number" name="price" class="form-control" id="exampleInputlastname1" aria-describedby="lastnameHelp" value="{{ properties.price }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Description</label>
+      <input type="text" name="desc" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ properties.desc }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">City</label>
+      <input type="text" name="city" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{ properties.city }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputnumber1" class="form-label">Address</label>
+      <input type="text" name="address" class="form-control" id="exampleInputnumber1" value="{{ properties.address }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputgoals1" class="form-label">Type</label>
+      <input type="text" name="type" class="form-control" id="exampleInputgoals1" value="{{ properties.type }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputtoday1" class="form-label">Floor</label>
+      <input type="text" name="floor" class="form-control" id="exampleInputtoday1" value="{{ properties.floor }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputgtk1" class="form-label">Status</label>
+      <input type="text" name="status" class="form-control" id="exampleInputgtk1" value="{{ properties.status }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputnotes1" class="form-label">Bedroom</label>
+      <input type="text" name="bedroom" class="form-control" id="exampleInputnotes1" value="{{ properties.bedroom }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputnotes1" class="form-label">Bathroom</label>
+      <input type="text" name="bathroom" class="form-control" id="exampleInputnotes1" value="{{ properties.bathroom }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputnotes1" class="form-label">Kitchen</label>
+      <input type="text" name="kitchen" class="form-control" id="exampleInputnotes1" value="{{ properties.kitchen }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputgtk1" class="form-label">Balcony</label>
+      <input type="text" name="balcony" class="form-control" id="exampleInputgtk1" value="{{ properties.balcony }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputnotes1" class="form-label">Parking</label>
+      <input type="text" name="parking" class="form-control" id="exampleInputnotes1" value="{{ properties.parking }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputnotes1" class="form-label">Lift</label>
+      <input type="text" name="lift" class="form-control" id="exampleInputnotes1" value="{{ properties.lift }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputnotes1" class="form-label">Pool</label>
+      <input type="text" name="pool" class="form-control" id="exampleInputnotes1" value="{{ properties.pool }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputnotes1" class="form-label">Area</label>
+      <input type="text" name="area" class="form-control" id="exampleInputnotes1" value="{{ properties.area }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputnotes1" class="form-label">Featured</label>
+      <input type="text" name="featured" class="form-control" id="exampleInputnotes1" value="{{ properties.featured }}">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputnotes1" class="form-label">Pictures</label>
+      <input type="text" name="area" class="form-control" id="exampleInputnotes1" value="">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputnotes1" class="form-label">Display Pictures</label>
+      <input type="text" name="featured" class="form-control" id="exampleInputnotes1" value="">
+    </div>
+    <button type="submit" class="btn btn-outline-info">Update</button>
+  </form>
+</div>
+{% endblock %}
+{% block bodyscripts %}
+  <!-- jQuery -->
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/jquery/jquery.min.js') }}"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<!-- ChartJS -->
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/chart.js/Chart.min.js') }}"></script>
+<!-- Sparkline -->
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/sparklines/sparkline.js') }}"></script>
+<!-- JQVMap -->
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/jqvmap/jquery.vmap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/jqvmap/maps/jquery.vmap.usa.js') }}"></script>
+<!-- jQuery Knob Chart -->
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/jquery-knob/jquery.knob.min.js') }}"></script>
+<!-- daterangepicker -->
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/moment/moment.min.js') }}"></script>
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/daterangepicker/daterangepicker.js') }}"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+<!-- Summernote -->
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<!-- overlayScrollbars -->
+<script src="{{ url_for('static', filename='AdminLTE-master/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+<!-- AdminLTE App -->
+<script src="{{ url_for('static', filename='AdminLTE-master/dist/js/adminlte.js') }}"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="{{ url_for('static', filename='AdminLTE-master/dist/js/demo.js') }}"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="{{ url_for('static', filename='AdminLTE-master/dist/js/pages/dashboard.js') }}"></script>
+  {% endblock %}

@@ -65,256 +65,29 @@
                     </div>
                 </div>
                 <div class="row">
+                    {% for agent in agents %}
                     <div class="col-lg-3 col-md-4 col-12">
                         <div class="single-team fadeInUp wow" data-wow-delay="0.3s">
                             <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/1.jpg" alt="">
+                                <a href="/agent-details/{{agent._id}}">
+                                    <img src="/static/img/profile/{{agent.profile_pic}}" alt="">
                                 </a>
                             </div>
                             <div class="team-desc">
                                 <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
+                                    <h6><a href="/agent-details/{{agent._id}}">{{agent.fullname}}</a></h6>
                                     <p>Real Estate Agent</p>
                                 </div>
                                 <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
+                                    <!-- <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a> -->
+                                    <a  href="https://{{agent.facebook}}" target="blank"><i class="fa fa-facebook"></i></a>
+                                    <a  href="https://{{agent.instagram}}" target="blank"><i class="fa fa-instagram"></i></a>
+                                    <a  href="https://{{agent.website}}" target="blank"><i class="fa fa-chrome"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-12">
-                        <div class="single-team fadeInUp wow" data-wow-delay="0.4s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/2.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-12">
-                        <div class="single-team fadeInUp wow" data-wow-delay="0.5s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/3.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-12">
-                        <div class="single-team fadeInUp wow" data-wow-delay="0.3s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/4.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-12">
-                        <div class="single-team fadeInUp wow" data-wow-delay="0.4s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/5.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-12">
-                        <div class="single-team fadeInUp wow" data-wow-delay="0.5s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/6.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-12">
-                        <div class="single-team fadeInUp wow" data-wow-delay="0.4s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/7.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-12">
-                        <div class="single-team fadeInUp wow" data-wow-delay="0.5s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/8.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-12">
-                        <div class="single-team fadeInUp wow" data-wow-delay="0.3s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/9.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-12">
-                        <div class="single-team fadeInUp wow" data-wow-delay="0.4s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/10.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-12">
-                        <div class="single-team fadeInUp wow" data-wow-delay="0.5s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/11.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-12">
-                        <div class="single-team fadeInUp wow" data-wow-delay="0.3s">
-                            <div class="team-img">
-                                <a href="agent-details.html"><img src="/static/img/team/12.jpg" alt=""></a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a  href="#"><i class="fa fa-facebook"></i></a>
-                                    <a  href="#"><i class="fa fa-twitter"></i></a>
-                                    <a  href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
                 <div class="row">
                     <div class="col-12">

@@ -26,6 +26,16 @@
 </div>
 <!--Breadcrumbs end-->
 
+{% if msg != 'msg' %}
+        <!-- alert  -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Oops!</strong> {{msg}}.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+{% endif %} 
+
 <!--My account start-->
 <div class="agent-details-page pt-130">
     <div class="agent-details">
@@ -57,21 +67,59 @@
                                     <div class="col-md-6 col-12">
                                         <div class="input-type">
                                             <label>Your Name</label>
-                                            <input type="text" name="name" value="{{account.fullname}}" placeholder="You name here">
+                                            <input type="text" name="name" value="{{account.fullname}}" placeholder="Your name here">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="input-type">
                                             <label>Your Email</label>
-                                            <input type="email" name="email" value="{{account.email}}" placeholder="You Email here">
+                                            <input type="email" name="email" value="{{account.email}}" placeholder="Your Email here">
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="input-type">
                                             <label>Your Phone</label>
-                                            <input type="number" name="phone" value="{{account.phone}}" placeholder="You Phone here">
+                                            <input type="number" name="phone" value="{{account.phone}}" placeholder="Your Phone here">
                                         </div>
                                     </div>
+                                    {% if account.type == 'agent' %}
+                                    <div class="col-md-6 col-12">
+                                        <div class="input-type">
+                                            <label>About</label>
+                                            <input type="text" name="about" value="{{account.about}}" placeholder="This will be published on the agent page">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="input-type">
+                                            <label>Biography</label>
+                                            <input type="text" name="biography" value="{{account.biography}}" placeholder="This will be published on the agent page">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="input-type">
+                                            <label>Working Experience</label>
+                                            <input type="text" name="experience" value="{{account.working_experience}}" placeholder="This will be published on the agent page">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="input-type">
+                                            <label>Completed Projects</label>
+                                            <input type="number" name="completed_projects" value="{{account.completed_projects}}" placeholder="This will be published on the agent page">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="input-type">
+                                            <label>Property Sold</label>
+                                            <input type="number" name="property_sold" value="{{account.property_sold}}" placeholder="This will be published on the agent page">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="input-type">
+                                            <label>Happy Clients</label>
+                                            <input type="number" name="happy_clients" value="{{account.happy_clients}}" placeholder="This will be published on the agent page">
+                                        </div>
+                                    </div>
+                                    {% endif %}
                                 </div>
                                 <!-- <div class="row profile-top-form-bottom">
                                     <div class="col-12">

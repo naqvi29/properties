@@ -61,6 +61,11 @@
                             </div>
                             <div class="single-property-description">
                                 <div class="desc-title">
+                                    <h4>{{property.title}}</h4>
+                                </div>
+                            </div>
+                            <div class="single-property-description">
+                                <div class="desc-title">
                                     <h5>Description</h5>
                                 </div>
                                 <div class="description-inner">
@@ -363,70 +368,25 @@
                                 </div>
                                 <div class="feature-property">
                                     <div class="row">
+                                        {% for property in featured %}
                                         <div class="col-lg-6 col-md-6 col-12">
                                             <div class="single-property">
                                                 <div class="property-img">
-                                                    <a href="single-properties.html">
-                                                        <img src="/static/img/property/7.jpg" alt="">
+                                                    <a href="/single-properties/{{property._id}}">
+                                                        <img src="/static/img/property/{{property.display_pic}}" alt="">
+                                                        <!-- width="368px" height="287px" -->
                                                     </a>
                                                 </div>
                                                 <div class="property-desc text-center">
                                                     <div class="property-desc-top">
-                                                        <h6><a href="single-properties.html">Friuli-Venezia Giulia</a>
+                                                        <h6><a href="/single-properties/{{property._id}}">{{property.title}}</a>
                                                         </h6>
-                                                        <h4 class="price">$52,354</h4>
+                                                        <h4 class="price">Rs {{property.price}}</h4>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-12">
-                                            <div class="single-property">
-                                                <div class="property-img">
-                                                    <a href="single-properties.html">
-                                                        <img src="/static/img/property/3.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="property-desc text-center">
-                                                    <div class="property-desc-top">
-                                                        <h6><a href="single-properties.html">Friuli-Venezia Giulia</a>
-                                                        </h6>
-                                                        <h4 class="price">$52,354</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12">
-                                            <div class="single-property">
-                                                <div class="property-img">
-                                                    <a href="single-properties.html">
-                                                        <img src="/static/img/property/5.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="property-desc text-center">
-                                                    <div class="property-desc-top">
-                                                        <h6><a href="single-properties.html">Friuli-Venezia Giulia</a>
-                                                        </h6>
-                                                        <h4 class="price">$52,354</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 col-12">
-                                            <div class="single-property">
-                                                <div class="property-img">
-                                                    <a href="single-properties.html">
-                                                        <img src="/static/img/property/11.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="property-desc text-center">
-                                                    <div class="property-desc-top">
-                                                        <h6><a href="single-properties.html">Friuli-Venezia Giulia</a>
-                                                        </h6>
-                                                        <h4 class="price">$52,354</h4>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </aside>
@@ -436,82 +396,24 @@
                                 </div>
                                 <div class="our-agent-sidbar">
                                     <div class="row">
+                                        {% for agent in agents %}
                                         <div class="col-lg-4 col-md-6 col-12">
                                             <div class="single-agent">
                                                 <div class="agent-img">
-                                                    <a href="agent-details.html">
-                                                        <img src="/static/img/team/1.jpg" alt="">
+                                                    <a href="/agent-details/{{agent._id}}">
+                                                        <img src="/static/img/profile/{{agent.profile_pic}}" alt="">
                                                     </a>
                                                 </div>
                                                 <div class="agent-title">
-                                                    <h6><a href="agent-details.html">Evan Smith</a></h6>
+                                                    <h6><a href="/agent-details/{{agent._id}}">{{agent.name}}</a></h6>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="single-agent">
-                                                <div class="agent-img">
-                                                    <a href="agent-details.html">
-                                                        <img src="/static/img/team/2.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="agent-title">
-                                                    <h6><a href="agent-details.html">Evan Smith</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="single-agent">
-                                                <div class="agent-img">
-                                                    <a href="agent-details.html">
-                                                        <img src="/static/img/team/3.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="agent-title">
-                                                    <h6><a href="agent-details.html">Evan Smith</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="single-agent">
-                                                <div class="agent-img">
-                                                    <a href="agent-details.html">
-                                                        <img src="/static/img/team/4.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="agent-title">
-                                                    <h6><a href="agent-details.html">Evan Smith</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="single-agent">
-                                                <div class="agent-img">
-                                                    <a href="agent-details.html">
-                                                        <img src="/static/img/team/5.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="agent-title">
-                                                    <h6><a href="agent-details.html">Evan Smith</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-12">
-                                            <div class="single-agent">
-                                                <div class="agent-img">
-                                                    <a href="agent-details.html">
-                                                        <img src="/static/img/team/6.jpg" alt="">
-                                                    </a>
-                                                </div>
-                                                <div class="agent-title">
-                                                    <h6><a href="agent-details.html">Evan Smith</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </aside>
-                            <aside class="single-side-box tags">
+                            <!-- <aside class="single-side-box tags">
                                 <div class="aside-title">
                                     <h5>Tags</h5>
                                 </div>
@@ -524,8 +426,8 @@
                                         <li><a href="#">But property</a></li>
                                     </ul>
                                 </div>
-                            </aside>
-                            <aside class="single-side-box video">
+                            </aside> -->
+                            <!-- <aside class="single-side-box video">
                                 <div class="aside-title">
                                     <h5>Take a tour</h5>
                                 </div>
@@ -537,7 +439,7 @@
                                         <a href="https://youtu.be/vb5KLYAtPIs"><i class="fa fa-play"></i></a>
                                     </div>
                                 </div>
-                            </aside>
+                            </aside> -->
                         </div>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 
 {% block head %}
-<title>Haven | Home</title>
+<title>Haven | Register</title>
 <link rel="stylesheet" href="myProjects/webProject/icofont/css/icofont.min.css">
 <!-- style for image uploader  -->
 <style>
@@ -70,27 +70,27 @@
                         <div id="profile-container">
                             <img id="profileImage" height="50" src="/static/img/default_profile.jpg" />
                         </div>
-                        <input id="imageUpload" type="file" name="profile_pic" placeholder="Photo" capture required>
+                        <input id="imageUpload" type="file" name="profile_pic" placeholder="Photo" capture class="form-control"> 
 
                         <!-- <div class="username"> -->
                         <div class="">
-                            <input type="text" name="fullname" placeholder="Fullname" required>
+                            <input type="text" name="fullname" placeholder="Fullname" spellcheck>
                         </div>
                         <!-- <div class="username"> -->
                         <div class="">
-                            <input type="text" name="username" placeholder="Username" required>
+                            <input type="text" name="username" placeholder="Username" spellcheck>
                         </div>
                         <div>
                             <input type="text"
                                 pattern="03[0-9]{2}(?!0123456)(?!1234567)(?!2345678)(?!3456789)(?!4567890)(?!0987654)(?!9876543)(?!8765432)(?!7654321)(?!6543210)([0-9])(?!\1{6})[0-9]{6}"
-                                name="phone" placeholder="Phone" required>
+                                name="phone" placeholder="Phone" spellcheck>
                         </div>
                         <!-- <div class="email"> -->
                         <div class="">
                             <input type="text" name="email" placeholder="Email">
                         </div>
                         <div class="">
-                            <select class="" type="text" name="city" placeholder="City" required>
+                            <select class="" type="text" name="city" placeholder="City" spellcheck>
                                 <option value="None" disabled selected>City</option>
                                 <option value="karachi">Karachi</option>
                                 <option value="islamabad">Islamabad</option>
@@ -99,13 +99,13 @@
                         </div>
                         <!-- <div class="password"> -->
                         <div class="">
-                            <input type="password" name="password" placeholder="Password" required>
+                            <input type="password" name="password" placeholder="Password" spellcheck>
                         </div>
                         <div class="">
-                            <input type="password" name="conf_password" placeholder="Confirm password" required>
+                            <input type="password" name="conf_password" placeholder="Confirm password" spellcheck>
                         </div>
                         <div class="">
-                            <select class="" type="text" name="type" placeholder="Signing Up as*" required>
+                            <select class="" type="text" name="type" placeholder="Signing Up as*" spellcheck>
                                 <option value="None" disabled selected>Signing Up as*</option>
                                 <optgroup label="Individual">
                                     <option value="owner">Owner/Investor</option>
@@ -119,11 +119,12 @@
                         <div class="agree-text">
                             <p>
                                 <label>
-                                    <input type="checkbox" required> <span>I have read and I agree to the properties.com
+                                    <input type="checkbox" spellcheck> <span>I have read and I agree to the properties.com
                                         Terms and Conditions</span>
                                 </label>
                             </p>
-                        </div>
+                        </div>                        
+                        <div class="msg" style="color: red;">{{ msg }}</div>
                         <div class="register">
                             <button type="submit">Register</button>
                         </div>

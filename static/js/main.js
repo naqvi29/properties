@@ -369,6 +369,7 @@
   -------------------------------*/
   $("#fakeLoader").fakeLoader({
     timeToHide: 1500,
+    // timeToHide: 1500,
     zIndex: 999999,
     spinner: "spinner1", //Options: 'spinner1', 'spinner2', 'spinner3', 'spinner4', 'spinner5', 'spinner6', 'spinner7' 
     bgColor: "#fff"

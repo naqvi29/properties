@@ -25,11 +25,8 @@
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
     <!--Preloader start-->
-    <div id="fakeLoader"></div>
+    <!-- <div id="fakeLoader"></div> -->
     <!--Preloader end-->
     <div class="wrapper white_bg">
         <!--Header section start-->
@@ -39,20 +36,20 @@
                     <div class="row">
                         <div class="col-md-4 col-12">
                             <div class="haven-call">
-                                <p>+012 345 678 102</p>
+                                <p>+92 336 8476582</p>
                             </div>
                         </div>
                         <div class="col-md-8 col-12">
                             <div class="header-1-top-inner">
                                 <div class="header-topbar-menu">
                                     <ul>
-                                        <li><span><img src="/static/img/icon/mail.png" alt=""></span> info@haven.com</li>
-                                        <li><a href="{{ url_for('agency') }}">Create Agency</a></li>
+                                        <li><span><img src="/static/img/icon/mail.png" alt=""></span> info@webtrica.com</li>
+                                        <!-- <li><a href="">Create Agency</a></li> -->
 
                                         {% if username %}
-                                        <li><a href="#">{{username}}</a></li>
                                         <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                                        <li><a href="/myaccount/{{username}}"><img src="/static/img/icon/user.png" alt=""></a></li>
+                                        <li><a href="/myaccount/{{username}}/msg">{{username}}</a></li>
+                                        <!-- <li><a href="#">{{username}}</a></li> -->
                                         {% else %}
                                         <li><a data-target="#quick-view" data-toggle="modal" href="#">Login</a></li>
                                         <li><a href="{{ url_for('register') }}">Register</a></li>
@@ -96,7 +93,7 @@
                                                 </ul> -->
                                             </li>
                                             <li><a href="{{ url_for('about_us') }}">About</a></li>
-                                            <li><a href="#">pages</a>
+                                            <!-- <li><a href="#">pages</a>
                                                 <ul class="dropdown_menu">
                                                     <li><a href="about-us.html">About us</a></li>
                                                     <li><a href="contact.html">contact us</a></li>
@@ -110,7 +107,7 @@
                                                     <li><a href="single-services.html">Single Services</a></li>
                                                     <li><a href="single-services-2.html">Single Services 2 </a></li>
                                                 </ul>
-                                            </li>
+                                            </li> -->
 
                                             <li><a href="{{ url_for('properties') }}">PROPERTIES </a>
                                                 <!-- <ul class="dropdown_menu">
@@ -129,7 +126,7 @@
                                                 <ul class="dropdown_menu">
                                                     <!-- <li><a href="agent.html">Agent page</a></li> -->
                                                     <!-- <li><a href="agent-details.html">Agent Details</a></li> -->
-                                                    <li><a href="{{ url_for('agency') }}">Create Agency</a></li>
+                                                    <li><a href="{{ url_for('register') }}">Become an agent</a></li>
                                                 </ul>
                                             </li>
                                             <!-- <li class="mega-parent"><a href="#">Elements</a>
@@ -204,7 +201,7 @@
                                         </ul>
                                     </li>
                                     <li><a href="about-us.html">About</a></li>
-                                    <li><a href="blog.html"> BLOG</a>
+                                    <!-- <li><a href="blog.html"> BLOG</a>
                                         <ul>
                                             <li><a href="blog.html">Blog pages</a></li>
                                             <li><a href="blog-sidebar.html">Blog Sidebar</a></li>
@@ -214,21 +211,21 @@
                                             <li><a href="article-left-sidebar.html">Blog details left sidebar</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#">pages</a>
-                                        <ul>
-                                            <li><a href="about-us.html">About us</a></li>
-                                            <li><a href="contact.html">contact us</a></li>
-                                            <li><a href="404.html">404</a></li>
-                                            <li><a href="add-property.html">Add property</a></li>
-                                            <li><a href="feature.html">Feature</a></li>
-                                            <li><a href="login.html">login</a></li>
-                                            <li><a href="register.html">register</a></li>
-                                            <li><a href="my-account.html">My account</a></li>
-                                            <li><a href="services.html">Services page</a></li>
-                                            <li><a href="single-services.html">Single Services</a></li>
-                                            <li><a href="single-services-2.html">Single Services 2 </a></li>
-                                        </ul>
-                                    </li>
+                                        <li><a href="#">pages</a>
+                                            <ul>
+                                                <li><a href="about-us.html">About us</a></li>
+                                                <li><a href="contact.html">contact us</a></li>
+                                                <li><a href="404.html">404</a></li>
+                                                <li><a href="add-property.html">Add property</a></li>
+                                                <li><a href="feature.html">Feature</a></li>
+                                                <li><a href="login.html">login</a></li>
+                                                <li><a href="register.html">register</a></li>
+                                                <li><a href="my-account.html">My account</a></li>
+                                                <li><a href="services.html">Services page</a></li>
+                                                <li><a href="single-services.html">Single Services</a></li>
+                                                <li><a href="single-services-2.html">Single Services 2 </a></li>
+                                            </ul>
+                                        </li> -->
 
                                     <li><a href="properties.html">PROPERTIES </a>
                                         <ul>
@@ -315,8 +312,8 @@
                         <div class="col-12">
                             <div class="search-form">
                                 <div class="search-form-inner">
-                                    <form action="#">
-                                        <input type="text" placeholder="Search..">
+                                    <form action="/header-search" method="post">
+                                        <input type="text" name="text" placeholder="Search..">
                                         <button type="submit"><i class="icofont icofont-search-alt-1"></i></button>
                                     </form>
                                 </div>
@@ -477,7 +474,7 @@
                         <div class="account-title">
                             <h5>Login</h5>
                         </div>
-                        <form id="contact-form" action="/login" method="post">
+                        <form action="/login" method="post">
                             <div class="username">
                                 <input type="text" name="username" placeholder="Username">
                             </div>
@@ -490,10 +487,10 @@
                             <div class="lost-password">
                                 <p><a href="#">Lost your password?</a></p>
                             </div>
+                            <div class="msg" style="color: red;">{{ msg }}</div>
                             <div class="login">
                                 <button type="submit">Sign in</button>
                             </div>
-                            <p class="form-messege"></p>
                         </form>
                         <div class="login-with-another">
                             <a class="facebook" href="#"><i class="icofont icofont-social-facebook"></i> Login with

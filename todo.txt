@@ -1,5 +1,5 @@
-message dikhana hai abhi har jaga new tab mai msg khulaega return kara wa hai har jaga.
-clients bananay hain.
+
+notification reh gayi hai.
 admin dashboard banana hai.
 
 message dikhane keliye form mai ye id lagado id="contact-form"
