@@ -3,6 +3,7 @@
 
 {% block head %}
 <title>Haven | Add property</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 {% endblock %}
 {% block content %}
 
@@ -227,6 +228,7 @@
                                     <div class="information-title">
                                         <h5>Image gallery</h5>
                                     </div>
+
                                     <div class="image-upload-box">
                                         <label class="custom-file-upload">
                                             <span><i class="icofont icofont-folder-open"></i> Browse Images</span> <input name="pictures" type="file" multiple>
@@ -236,12 +238,19 @@
                                 <div class="image-upload-inner mt-4">
                                     <div class="information-title">
                                         <h5>Display Picture</h5>
+                                    </div>                                   
+                                    
+                                    <div id="profile-container">
+                                        <img id="profileImage" width="230px" height="219px" src="/static/img/default_profile.jpg" />
                                     </div>
-                                    <div class="image-upload-box">
+                                    <!-- <input id="imageUpload" type="file" name="profile_pic" placeholder="Photo" capture class="form-control">  -->
+                                    <input id="imageUpload" type="file" placeholder="photo" capture class="fom-control" name="display_pic" style="visibility: hidden;">
+
+                                    <!-- <div class="image-upload-box">
                                         <label class="custom-file-upload">
-                                            <span><i class="icofont icofont-folder-open"></i> Browse Image</span> <input name="display_pic" type="file">
+                                            <span><i class="icofont icofont-folder-open"></i> Browse Image</span> <input id="imageUpload" type="file" placeholder="photo" capture class="fom-control" name="display_pic">
                                         </label>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <!-- <div class="video-upload-inner">
                                     <div class="information-title">
@@ -375,5 +384,22 @@
                 </div>
             </div>
             <!--Brand section end-->
+            <script>
+                
+    $("#profileImage").click(function (e) {
+        $("#imageUpload").click();
+    });
+
+    function fasterPreview(uploader) {
+        if (uploader.files && uploader.files[0]) {
+            $('#profileImage').attr('src',
+                window.URL.createObjectURL(uploader.files[0]));
+        }
+    }
+
+    $("#imageUpload").change(function () {
+        fasterPreview(this);
+    });
+            </script>
             
 {% endblock %}

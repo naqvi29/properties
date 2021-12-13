@@ -42,18 +42,26 @@
         <div class="container">
             <form action="/edit-account/{{account._id}}" method="post"  enctype="multipart/form-data">
                 <div class="row">
-                    <div class="col-lg-4 col-md-6 col-12">
+                    <div class="col-lg-4 col-md-6 col-12">                        
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                         <div class="agent-profile">
                             <div class="single-team">
-                                <div class="profile-img">
-                                    <img src="/static/img/profile/{{account.profile_pic}}" alt="">
+                                <div id="profile-container" class="profile-img">
+                                    <img id="profileImage" src="/static/img/profile/{{account.profile_pic}}" width="360px" height="425px"/>
+                                </div>
+                                <input id="imageUpload" type="file" name="profile_pic" placeholder="Photo" capture class="form-control" style="visibility: hidden;"> 
+
+
+
+                                <!-- <div id="profile-container" class="profile-img">
+                                    <img id="profileImage" src="/static/img/profile/{{account.profile_pic}}" alt="">
                                 </div>
                                 <div class="profile_name">
                                     <label for="profile">
-                                        <span>Change your image</span> <input name="profile_pic" id="profile"
-                                            type="file">
+                                        <span>Change your image</span> <input name="profile_pic" id="imageUpload"
+                                            type="file"  capture class="form-control"  placeholder="Photo">
                                     </label>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -283,4 +291,24 @@
         return false ;
     }
   </script>
+
+  <!-- script for image uploader  -->
+<script>
+    $("#profileImage").click(function (e) {
+        $("#imageUpload").click();
+    });
+
+    function fasterPreview(uploader) {
+        if (uploader.files && uploader.files[0]) {
+            $('#profileImage').attr('src',
+                window.URL.createObjectURL(uploader.files[0]));
+        }
+    }
+
+    $("#imageUpload").change(function () {
+        fasterPreview(this);
+    });
+
+    
+</script>
 {% endblock %}

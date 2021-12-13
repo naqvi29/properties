@@ -40,12 +40,12 @@
                                     {% if loop.index == 1 %}
                                     <div class="tab-pane fade show active" id="image-{{loop.index}}" role="tabpanel"
                                     aria-labelledby="image-1-tab">
-                                    <img src="/static/img/property/{{ i }}" alt="">
+                                    <img src="/static/img/property/{{ i }}" width="750px" height="416px" alt="">
                                     </div>
                                     {% else %} 
                                     <div class="tab-pane fade" id="image-{{loop.index}}" role="tabpanel"
                                         aria-labelledby="image-1-tab">
-                                        <img src="/static/img/property/{{ i }}" alt="">
+                                        <img src="/static/img/property/{{ i }}" width="750px" height="416px" alt="">
                                     </div>
                                     {% endif %}
                                     {% endfor %}
@@ -55,7 +55,7 @@
                                     <div class="nav-item"><a class="nav-link" href="#image-{{loop.index}}" id="image-{{loop.index}}-tab"
                                             data-toggle="tab" role="tab" aria-controls="image-{{loop.index}}"
                                             aria-selected="true"><img src="/static/img/property/{{ i }}"
-                                                alt="" /></a></div>
+                                                alt="" width="108px" height="57px" /></a></div>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -184,7 +184,7 @@
                                 {% for review in reviews %}
                                 <div class="single-feedback mb-35 fix">
                                     <div class="feedback-img">
-                                        <img src="/static/img/profile/{{review.profile_pic}}" alt="">
+                                        <img src="/static/img/profile/{{review.profile_pic}}" width="81px" height="72px" alt="">
                                     </div>
                                     <div class="feedback-desc">
                                         <div class="feedback-title">
@@ -314,13 +314,13 @@
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="find-home-item">
-                                                            <input type="text" name="min_area"
+                                                            <input type="number" name="min_area"
                                                                 placeholder="Min area (sqft)">
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-6">
                                                         <div class="find-home-item ">
-                                                            <input type="text" name="max_area"
+                                                            <input type="number" name="max_area"
                                                                 placeholder="Max area (sqft)">
                                                         </div>
                                                     </div>
@@ -336,11 +336,26 @@
                                                             </select>
                                                         </div>
                                                     </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="find-home-item">
+                                                            <input type="number" name="min_price"
+                                                                placeholder="Price Min (Rs)">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="find-home-item ">
+                                                            <input type="number" name="max_price"
+                                                                placeholder="Price Max (Rs)">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="row find-home_bottom">
+                                                
+                                                <div class="find-home-item">
+                                                    <button type="submit">SEARCH PROPERTY </button>
+                                                </div>
+                                                <!-- <div class="row find-home_bottom">
                                                     <div class="col-12">
                                                         <div class="find-home-item">
-                                                            <!-- shop-filter -->
                                                             <div class="shop-filter">
                                                                 <div class="price_filter">
                                                                     <div class="price_slider_amount">
@@ -356,7 +371,7 @@
                                                             <button type="submit">SEARCH PROPERTY </button>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </form>
                                     </div>
@@ -373,7 +388,7 @@
                                             <div class="single-property">
                                                 <div class="property-img">
                                                     <a href="/single-properties/{{property._id}}">
-                                                        <img src="/static/img/property/{{property.display_pic}}" alt="">
+                                                        <img src="/static/img/property/{{property.display_pic}}"  width="137px" height="106px"  alt="">
                                                         <!-- width="368px" height="287px" -->
                                                     </a>
                                                 </div>
@@ -401,11 +416,11 @@
                                             <div class="single-agent">
                                                 <div class="agent-img">
                                                     <a href="/agent-details/{{agent._id}}">
-                                                        <img src="/static/img/profile/{{agent.profile_pic}}" alt="">
+                                                        <img src="/static/img/profile/{{agent.profile_pic}}" width="86px" height="102px" alt="">
                                                     </a>
                                                 </div>
                                                 <div class="agent-title">
-                                                    <h6><a href="/agent-details/{{agent._id}}">{{agent.name}}</a></h6>
+                                                    <h6><a href="/agent-details/{{agent._id}}">{{agent.fullname}}</a></h6>
                                                 </div>
                                             </div>
                                         </div>

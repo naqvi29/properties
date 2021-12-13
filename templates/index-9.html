@@ -117,12 +117,12 @@
                             </div>
                             <div class="col-lg-3 col-md-4 col-12">
                                 <div class="find-home-item mb-40">
-                                    <input type="text" name="min_area" placeholder="Min area (sqft)">
+                                    <input type="number" name="min_area" placeholder="Min area (sqft)">
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-4 col-12">
                                 <div class="find-home-item mb-40">
-                                    <input type="text" name="max_area" placeholder="Max area (sqft)">
+                                    <input type="number" name="max_area" placeholder="Max area (sqft)">
                                 </div>
                             </div>
                             <div class="col-lg-3 col-md-4 col-12">
@@ -136,11 +136,26 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-12">
-                                <div class="row">
-                                    <div class="col-md-7 col-12">
+                            <div class="col-lg-3 col-md-4 col-12">
+                                <div class="find-home-item mb-40">
+                                    <input type="number" name="min_price" placeholder="Price Min (Rs)">
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-12">
+                                <div class="find-home-item mb-40">
+                                    <input type="number" name="max_price" placeholder="Price Max (Rs)">
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3 col-12">
+                                <div class="find-home-item">
+                                    <button type="submit">SEARCH PROPERTY </button>
+                                </div>
+                            </div>
+                            <!-- <div class="col-lg-6 col-12"> -->
+                                <!-- <div class="row"> -->
+                                    <!-- <div class="col-md-7 col-12">
                                         <div class="find-home-item">
-                                            <!-- shop-filter -->
                                             <div class="shop-filter">
                                                 <div class="price_filter">
                                                     <div class="price_slider_amount">
@@ -152,14 +167,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-5 col-12">
-                                        <div class="find-home-item">
-                                            <button type="submit">SEARCH PROPERTY </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    </div> -->
+                                <!-- </div> -->
+                            <!-- </div> -->
                         </form>
                     </div>
                 </div>
@@ -203,7 +213,7 @@
                                         <div class="single-property">
                                             <div class="property-img">
                                                 <a href="/single-properties/{{property._id}}">
-                                                    <img src="/static/img/property/{{property.display_pic}}" alt="">
+                                                    <img src="/static/img/property/{{property.display_pic}}" width="368px" height="287px" alt="">
                                                 </a>
                                             </div>
                                             <div class="property-desc">
@@ -211,7 +221,7 @@
                                                     <h6><a href="/single-properties/{{property._id}}">{{property.title}}</a></h6>
                                                     <h4 class="price">Rs {{property.price}}</h4>
                                                     <div class="property-location">
-                                                        <p><img src="/static/img/property/icon-5.png" alt="">  {{property.address}}</p>
+                                                        <p><img src="/static/img/property/icon-5.png" alt="">  {{property.address | truncate(20) }}</p>
                                                         {% if property.floor %}
                                                         <p><img src="/static/img/property/stairs.png" alt="">{{property.floor}} floor</p>
                                                         {% else %}
@@ -263,7 +273,7 @@
                                                     <h6><a href="/single-properties/{{property._id}}">{{property.title}}</a></h6>
                                                     <h4 class="price">${{property.price}}</h4>
                                                     <div class="property-location">
-                                                        <p><img src="/static/img/property/icon-5.png" alt="">  {{property.address}}</p>
+                                                        <p><img src="/static/img/property/icon-5.png" alt="">  {{property.address | truncate(20) }}</p>
                                                         {% if property.floor %}
                                                         <p><img src="/static/img/property/icon-5.png" alt="">{{property.floor}} floor</p>
                                                         {% else %}
@@ -487,7 +497,7 @@
                             {% endif %}
                             <div class="property-img">
                                 <a href="/single-properties/{{property._id}}">
-                                    <img src="/static/img/property/{{property.display_pic}}" alt="">
+                                    <img src="/static/img/property/{{property.display_pic}}"  width="368px" height="287px"  alt="">
                                 </a>
                             </div>
                             <div class="property-desc">
@@ -495,7 +505,7 @@
                                     <h6><a href="/single-properties/{{property._id}}">{{property.title}}</a></h6>
                                     <h4 class="price">Rs {{property.price}}</h4>
                                     <div class="property-location">
-                                        <p><img src="/static/img/property/icon-5.png" alt=""> {{property.address}}</p>
+                                        <p><img src="/static/img/property/icon-5.png" alt=""> {{property.address | truncate(20) }}</p>
                                         {% if property.floor %}
                                         <p><img src="/static/img/property/stairs.png" alt="">{{property.floor}} floor</p>
                                         {% else %}
@@ -751,96 +761,29 @@
                     </div>
                 </div>
                 <div class="row">
+                    {% for agent in agents %}
                     <div class="col-lg-3 col-md-6 col-12">
                         <div class="single-team wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1.2s">
                             <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/1.jpg" alt="">
+                                <a href="/agent-details/{{agent._id}}">
+                                    <img src="/static/img/profile/{{agent.profile_pic}}" height="325px" width="275" alt="">
                                 </a>
                             </div>
                             <div class="team-desc">
                                 <div class="team-member-title">
-                                    <h6><a href="agent-details.html">Stephen de Smith</a></h6>
+                                    <h6><a href="/agent-details/{{agent._id}}">{{agent.fullname}}</a></h6>
                                     <p>Real Estate Agent</p>
                                 </div>
                                 <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <!-- <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a> -->
+                                    <a href="https://{{agent.facebook}}"><i class="fa fa-facebook"></i></a>
+                                    <a href="https://{{agent.instagram}}"><i class="fa fa-instagram"></i></a>
+                                    <a href="https://{{agent.website}}"><i class="fa fa-chrome"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-team wow fadeInUp" data-wow-delay="0.3s" data-wow-duration="1.3s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/2.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6>
-                                        <a href="agent-details.html">Stephen de Smith</a>
-                                    </h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-team wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1.4s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/3.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6>
-                                        <a href="agent-details.html">Stephen de Smith</a>
-                                    </h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6 col-12">
-                        <div class="single-team wow fadeInUp" data-wow-delay="0.5s" data-wow-duration="1.5s">
-                            <div class="team-img">
-                                <a href="agent-details.html">
-                                    <img src="/static/img/team/4.jpg" alt="">
-                                </a>
-                            </div>
-                            <div class="team-desc">
-                                <div class="team-member-title">
-                                    <h6>
-                                        <a href="agent-details.html">Stephen de Smith</a>
-                                    </h6>
-                                    <p>Real Estate Agent</p>
-                                </div>
-                                <div class="team-member-social">
-                                    <a href="#"><i class="zmdi zmdi-phone-in-talk"></i></a>
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-google-plus"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

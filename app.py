@@ -72,13 +72,19 @@ def hello_world():
     for i in featured_properties:
         i.update({"_id": str(i["_id"])})
         featured_lists.append(i)
+    # fetch agents 
+    agents = db.agents.find()
+    agentLists = []
+    for i in agents:
+        i.update({"_id":str(i["_id"])})
+        agentLists.append(i)
     if 'loggedin' in session:
         if session['type'] != 'admin':
-            return render_template("index-9.html",sale_new=sale_lists, rent_new=rent_lists,featured=featured_lists,username=session['username'])
+            return render_template("index-9.html",sale_new=sale_lists, rent_new=rent_lists,featured=featured_lists,username=session['username'],agents=agentLists)
         else:
-            return render_template("index-9.html",sale_new=sale_lists, rent_new=rent_lists,featured=featured_lists)
+            return render_template("index-9.html",sale_new=sale_lists, rent_new=rent_lists,featured=featured_lists,agents=agentLists)
     else:
-        return render_template("index-9.html",sale_new=sale_lists, rent_new=rent_lists,featured=featured_lists)
+        return render_template("index-9.html",sale_new=sale_lists, rent_new=rent_lists,featured=featured_lists,agents=agentLists)
 
 @app.route("/register", methods=['GET','POST'])
 def register():
@@ -294,7 +300,8 @@ def find_your_dream_home():
         min_area = None
         max_area = None
         floor = None
-        price = None
+        min_price = None
+        max_price = None
         if request.form.get("city"):
             city = request.form.get("city")
         if request.form.get("type"):
@@ -313,37 +320,39 @@ def find_your_dream_home():
             max_area = request.form.get("max_area")
         if request.form.get("floor"):
             floor = request.form.get("floor")
-        if request.form.get("price"):
-            price = request.form.get("price")
-        # concat price
-        numbers = re.findall('\d+', price)
-        min_price = int(numbers[0])
-        max_price = int(numbers[1])
+        if request.form.get("min_price"):
+            min_price = request.form.get("min_price")
+        if request.form.get("max_price"):
+            max_price = request.form.get("max_price")
+        # concat price)
+        # numbers = re.findall('\d+', price)
+        # min_price = int(numbers[0])
+        # max_price = int(numbers[1])
 
         # if everything is given 
-        if city != None and typee != None and status != None and bedroom != None and bathroom != None and kitchen != None and min_area != None and max_area != None and floor != None and price != None: 
-            query = {"city":city, "type":typee,"status":status,"bedroom":int(bedroom),"bathroom":int(bathroom),"kitchen":int(kitchen),"floor":floor,"area":{"$gt":int(min_area),"$lt":int(max_area)},"price":{"$gt":min_price,"$lt":max_price}}
+        if city != None and typee != None and status != None and bedroom != None and bathroom != None and kitchen != None and min_area != None and max_area != None and floor != None and min_price != None and max_price != None: 
+            query = {"city":city, "type":typee,"status":status,"bedroom":int(bedroom),"bathroom":int(bathroom),"kitchen":int(kitchen),"floor":floor,"area":{"$gt":int(min_area),"$lt":int(max_area)},"price":{"$gt":int(min_price),"$lt":int(max_price)}}
 
         # if everything is given except city
-        elif typee != None and status != None and bedroom != None and bathroom != None and kitchen != None and min_area != None and max_area != None and floor != None and price != None: 
+        elif typee != None and status != None and bedroom != None and bathroom != None and kitchen != None and min_area != None and max_area != None and floor != None and min_price != None and max_price != None: 
             query = {"type":typee,"status":status,"bedroom":int(bedroom),"bathroom":int(bathroom),"kitchen":int(kitchen),"floor":floor,"area":{"$gt":int(min_area),"$lt":int(max_area)},"price":{"$gt":min_price,"$lt":max_price}}
         # if everything is given except type
-        elif city != None and status != None and bedroom != None and bathroom != None and kitchen != None and min_area != None and max_area != None and floor != None and price != None: 
+        elif city != None and status != None and bedroom != None and bathroom != None and kitchen != None and min_area != None and max_area != None and floor != None and min_price != None and max_price != None: 
             query = {"city":city,"status":status,"bedroom":int(bedroom),"bathroom":int(bathroom),"kitchen":int(kitchen),"floor":floor,"area":{"$gt":int(min_area),"$lt":int(max_area)},"price":{"$gt":min_price,"$lt":max_price}}
         # if everything is given except status
-        elif city != None and typee != None and bedroom != None and bathroom != None and kitchen != None and min_area != None and max_area != None and floor != None and price != None: 
+        elif city != None and typee != None and bedroom != None and bathroom != None and kitchen != None and min_area != None and max_area != None and floor != None and min_price != None and max_price != None: 
             query = {"city":city,"type":typee,"bedroom":int(bedroom),"bathroom":int(bathroom),"kitchen":int(kitchen),"floor":floor,"area":{"$gt":int(min_area),"$lt":int(max_area)},"price":{"$gt":min_price,"$lt":max_price}}
         # if everything is given except bedroom
-        elif city != None and typee != None and status != None and bathroom != None and kitchen != None and min_area != None and max_area != None and floor != None and price != None: 
+        elif city != None and typee != None and status != None and bathroom != None and kitchen != None and min_area != None and max_area != None and floor != None and min_price != None and max_price != None: 
             query = {"city":city,"type":typee,"status":status,"bathroom":int(bathroom),"kitchen":int(kitchen),"floor":floor,"area":{"$gt":int(min_area),"$lt":int(max_area)},"price":{"$gt":min_price,"$lt":max_price}}
         # if everything is given except bathroom
-        elif city != None and typee != None and status != None and bedroom != None and kitchen != None and min_area != None and max_area != None and floor != None and price != None: 
+        elif city != None and typee != None and status != None and bedroom != None and kitchen != None and min_area != None and max_area != None and floor != None and min_price != None and max_price != None: 
             query = {"city":city,"type":typee,"status":status,"bedroom":int(bedroom),"kitchen":int(kitchen),"floor":floor,"area":{"$gt":int(min_area),"$lt":int(max_area)},"price":{"$gt":min_price,"$lt":max_price}}
         # if everything is given except kitchen
-        elif city != None and typee != None and status != None and bedroom != None and bathroom != None and min_area != None and max_area != None and floor != None and price != None: 
+        elif city != None and typee != None and status != None and bedroom != None and bathroom != None and min_area != None and max_area != None and floor != None and min_price != None and max_price != None: 
             query = {"city":city,"type":typee,"status":status,"bedroom":int(bedroom),"bathroom":int(bathroom),"floor":floor,"area":{"$gt":int(min_area),"$lt":int(max_area)},"price":{"$gt":min_price,"$lt":max_price}}
         # if everything is given except min_area and max_area
-        elif city != None and typee != None and status != None and bedroom != None and bathroom != None and kitchen != None and floor != None and price != None: 
+        elif city != None and typee != None and status != None and bedroom != None and bathroom != None and kitchen != None and floor != None and min_price != None and max_price != None: 
             query = {"city":city,"type":typee,"status":status,"bedroom":int(bedroom),"bathroom":int(bathroom),"floor":floor,"kitchen":int(kitchen),"price":{"$gt":min_price,"$lt":max_price}}
 
         # if only city is given
@@ -385,8 +394,11 @@ def find_your_dream_home():
             query = {"city":city,"type":typee,"status":status,"floor":floor,"area":{"$gt":int(min_area),"$lt":int(max_area)}}
 
         # if nothing is given 
-        elif city == None and typee == None and status == None and bedroom == None and bathroom == None and kitchen == None and min_area == None and max_area == None and floor == None:
-            query={"price":{"$gt":min_price,"$lt":max_price}}
+        elif city == None and typee == None and status == None and bedroom == None and bathroom == None and kitchen == None and min_area == None and max_area == None and floor == None and min_price == None and max_price == None:
+            query={}
+        # if only prices are given 
+        elif city == None and typee == None and status == None and bedroom == None and bathroom == None and kitchen == None and min_area == None and max_area == None and floor == None and min_price != None and max_price != None:
+            query={"price":{"$gt":int(min_price),"$lt":int(max_price)}}
         
         # result = db.properties.find()
         result = db.properties.find(query)
@@ -517,9 +529,9 @@ def add_property():
                         os.path.join(PROPERTIES_FOLDER, filename))
                     
                     # compress image and set dimensions
-                    newimage = Image.open(os.path.join(PROPERTIES_FOLDER, str(filename)))
-                    newimage.thumbnail((368, 287))
-                    newimage.save(os.path.join(PROPERTIES_FOLDER, str(filename)), quality=95)
+                    # newimage = Image.open(os.path.join(PROPERTIES_FOLDER, str(filename)))
+                    # newimage.resize((368, 287))
+                    # newimage.save(os.path.join(PROPERTIES_FOLDER, str(filename)), quality=95)
                 else:
                     msg = "picture not found or incorrect format"
                     return render_template("add-property.html",username = session['username'],msg=msg)
