@@ -10,6 +10,7 @@ from os.path import join, dirname, realpath
 from werkzeug.utils import redirect, secure_filename
 from PIL import Image
 from flask_mail import Mail, Message
+import 
 
 app = Flask(__name__)
 
@@ -54,9 +55,9 @@ app.secret_key = '_5#y2L"F4Q8z\n\xec]/'
 
 @app.route("/")
 def hello_world():
-    sale_query = {"status": "sale"} 
-    rent_query = {"status": "rent"} 
-    featured_query = {"featured": True} 
+    sale_query = {"status": "sale","sold":{"$ne":True}} 
+    rent_query = {"status": "rent","sold":{"$ne":True}} 
+    featured_query = {"featured": True,"sold":{"$ne":True}} 
     new_properties_sale = db.properties.find(sale_query).sort("timestamp", -1)
     new_properties_rent = db.properties.find(rent_query).sort("timestamp", -1)
     featured_properties = db.properties.find(featured_query)
@@ -99,17 +100,6 @@ def register():
         conf_password = request.form.get("conf_password")
         type = request.form.get("type")
         profile_pic = request.files.get('profile_pic')
-        if profile_pic and allowed_file(profile_pic.filename):
-            filename = secure_filename(profile_pic.filename)
-            profile_pic.save(
-                os.path.join(app.config['PROFILE_FOLDER'], filename))
-            # compress image
-            newimage = Image.open(os.path.join(app.config['PROFILE_FOLDER'], str(filename)))
-            newimage.thumbnail((400, 400))
-            newimage.save(os.path.join(PROFILE_FOLDER, str(filename)), quality=95)
-        else:
-            msg = "Profile picture not found or format is not supported"
-            return render_template("register.html" ,msg=msg)
         regex = '[^@]+@[a-zA-Z0-9]+[.][a-zA-Z]+'
         if not (re.search(regex, email)):
             msg = "invalid email"
@@ -120,30 +110,25 @@ def register():
         if not username:
                 msg = "Missing username"
                 return render_template("register.html" ,msg=msg)
-        query = {"username": username}          
-        agent_data = db.agents.find_one(query)
-        user_data = db.users.find_one(query)
-        if type == 'agent': 
-            if agent_data is None and user_data is None:
-                newvalues =  {
-                            'username': username,
-                            'fullname': fullname,
-                            'phone': phone,
-                            'email': email,
-                            'city': city,
-                            'password': password,
-                            'type':type,
-                            'profile_pic':filename
-                    }
-                db.agents.insert_one(newvalues)
-                msg = "You are registered!"
-                return render_template("login.html",success_msg=msg)
+        
+        if profile_pic.filename:
+            if profile_pic and allowed_file(profile_pic.filename):
+                filename = secure_filename(profile_pic.filename)
+                profile_pic.save(
+                    os.path.join(app.config['PROFILE_FOLDER'], filename))
+                # compress image
+                newimage = Image.open(os.path.join(app.config['PROFILE_FOLDER'], str(filename)))
+                newimage.thumbnail((400, 400))
+                newimage.save(os.path.join(PROFILE_FOLDER, str(filename)), quality=95)
             else:
-                msg = "Agent already exists."
+                msg = "Profile picture not found or format is not supported"
                 return render_template("register.html" ,msg=msg)
-        else:    
-                if user_data is None and agent_data is None: 
-                    newvalues = {
+            query = {"username": username}          
+            agent_data = db.agents.find_one(query)
+            user_data = db.users.find_one(query)
+            if type == 'agent': 
+                if agent_data is None and user_data is None:
+                    newvalues =  {
                                 'username': username,
                                 'fullname': fullname,
                                 'phone': phone,
@@ -153,12 +138,71 @@ def register():
                                 'type':type,
                                 'profile_pic':filename
                         }
-                    db.users.insert_one(newvalues)
+                    db.agents.insert_one(newvalues)
                     msg = "You are registered!"
                     return render_template("login.html",success_msg=msg)
                 else:
-                    msg = "User already exists."
+                    msg = "Agent already exists."
                     return render_template("register.html" ,msg=msg)
+            else:    
+                    if user_data is None and agent_data is None: 
+                        newvalues = {
+                                    'username': username,
+                                    'fullname': fullname,
+                                    'phone': phone,
+                                    'email': email,
+                                    'city': city,
+                                    'password': password,
+                                    'type':type,
+                                    'profile_pic':filename
+                            }
+                        db.users.insert_one(newvalues)
+                        msg = "You are registered!"
+                        return render_template("login.html",success_msg=msg)
+                    else:
+                        msg = "User already exists."
+                        return render_template("register.html" ,msg=msg)
+        else:            
+            query = {"username": username}          
+            agent_data = db.agents.find_one(query)
+            user_data = db.users.find_one(query)
+            if type == 'agent': 
+                if agent_data is None and user_data is None:
+                    newvalues =  {
+                                'username': username,
+                                'fullname': fullname,
+                                'phone': phone,
+                                'email': email,
+                                'city': city,
+                                'password': password,
+                                'type':type,
+                                'profile_pic':"default.jpg"
+                        }
+                    db.agents.insert_one(newvalues)
+                    msg = "You are registered!"
+                    return render_template("login.html",success_msg=msg)
+                else:
+                    msg = "Agent already exists."
+                    return render_template("register.html" ,msg=msg)
+            else:    
+                    if user_data is None and agent_data is None: 
+                        newvalues = {
+                                    'username': username,
+                                    'fullname': fullname,
+                                    'phone': phone,
+                                    'email': email,
+                                    'city': city,
+                                    'password': password,
+                                    'type':type,
+                                    'profile_pic':"default.jpg"
+                            }
+                        db.users.insert_one(newvalues)
+                        msg = "You are registered!"
+                        return render_template("login.html",success_msg=msg)
+                    else:
+                        msg = "User already exists."
+                        return render_template("register.html" ,msg=msg)
+            
     else:
         return render_template("register.html")
 
@@ -263,14 +307,14 @@ def about_us():
 
 @app.route("/properties")
 def properties():
-    properties = db.properties.find()
+    query ={"sold":{"$ne":True}}
+    properties = db.properties.find(query)
     # return str(properties)
     lists = []
     # for loop
     for i in properties:
         query = {"property_id":i["_id"]}
         viewsData = db.property_views.find(query)
-        print(viewsData)
         viewsLists = []
         for view in viewsData:
             view.update({"_id": str(view["_id"])})
@@ -448,7 +492,7 @@ def single_properties(propertyid):
         db.property_views.insert_one(newValues)
     # .... 
     # fetch 4 latest featured properties for sidebar 
-    query = {"featured":True}
+    query = {"featured":True,"sold":{"$ne":True}}
     featured_properties = db.properties.find(query).limit(4)
     f_prop_lists = []
     for prop in featured_properties:
@@ -502,14 +546,17 @@ def add_property():
                     lift = True
                 if request.form.get("pool") == "on":
                     pool = True
+                # return str(request.files.getlist("images[]"))
+                # return str(request.files.getlist("pictures"))
 
                 # save pictures
-                pictures = request.files.getlist("pictures")
+                # pictures = request.files.getlist("pictures")
+                pictures = request.files.getlist("images[]")
                 filenames = []
                 for picture in pictures:
                     if picture and allowed_file(picture.filename):
                         filename = secure_filename(picture.filename)
-                        print (filename)
+                        # print (filename)
                         picture.save(
                             os.path.join(PROPERTIES_FOLDER, filename))
                         filename=filenames.append(filename)                 
@@ -520,21 +567,10 @@ def add_property():
                     else:
                         msg = "picture not found or incorrect format"
                         return render_template("add-property.html",username = session['username'],msg=msg)
-                # save display picture
-                display_picture = request.files.get("display_pic")
-                if display_picture and allowed_file(display_picture.filename):
-                    filename = secure_filename(display_picture.filename)
-                    print (filename)
-                    display_picture.save(
-                        os.path.join(PROPERTIES_FOLDER, filename))
-                    
-                    # compress image and set dimensions
-                    # newimage = Image.open(os.path.join(PROPERTIES_FOLDER, str(filename)))
-                    # newimage.resize((368, 287))
-                    # newimage.save(os.path.join(PROPERTIES_FOLDER, str(filename)), quality=95)
-                else:
-                    msg = "picture not found or incorrect format"
-                    return render_template("add-property.html",username = session['username'],msg=msg)
+                # fetch the last item from the list that is display_pic 
+                display_pic = filenames[-1] 
+                # delete the last item from the list 
+                del filenames[-1]
                 newProperty={
                     "title":title,
                     "price":float(price),
@@ -554,8 +590,10 @@ def add_property():
                     "pool":pool,
                     "timestamp":timestamp,
                     "pictures":filenames,
-                    "display_pic":filename,
-                    "added-by":session['id']
+                    "display_pic":display_pic,
+                    "added-by":session['id'],
+                    # byDefault 
+                    "featured":False,
                 }
                 db.properties.insert_one(newProperty)
                 query = {"title":title,"desc":desc,"timestamp":timestamp}
@@ -645,8 +683,8 @@ def contact_form():
     if request.method == 'POST':
         if "loggedin" in session:
             if session['type'] != 'admin' and session['type'] != 'agent':
-                msg = request.form.get("msg")            
-                if not msg:
+                mesg = request.form.get("msg")            
+                if not mesg:
                     return "Please fill all required fields"
                 query = {"_id":ObjectId(session['id'])}
                 userData = db.users.find_one(query)
@@ -654,13 +692,19 @@ def contact_form():
                     "name": userData['fullname'],
                     "email": userData['email'],
                     "type": userData['type'],
-                    "msg": msg,
+                    "msg": mesg,
                 }
-                db.contact.insert_one(newData)
+                db.contact.insert_one(newData)                
+                msg = Message("Properties! New Message", recipients=["property@globalcaregroup.net"])
+                msg.html = str("<p>Name:&nbsp;"+str(userData['fullname'])+"</p><p>Email:&nbsp;"+str(userData['email'])+"</p><p> type:&nbsp;"+str(userData['type'])+"</p><p> msg:&nbsp; "+str(mesg)+"</p>")
+                mail.send(msg)
+                msg = Message("Properties!", recipients=[str(userData['email'])])
+                msg.html = str("<p>Dear,"+str(userData['fullname'])+"</p><p>We have received your email, and our support team will be in touch with you soon.</p><p>Best regards,</p><p>Properties</p>")
+                mail.send(msg)
                 return "Message Sent Successfully"
             elif session['type'] == 'agent':
-                msg = request.form.get("msg")            
-                if not msg:
+                mesg = request.form.get("msg")            
+                if not mesg:
                     return "Please fill all required fields"
                 query = {"_id":ObjectId(session['id'])}
                 agentData = db.agents.find_one(query)
@@ -668,15 +712,21 @@ def contact_form():
                     "name": agentData['fullname'],
                     "email": agentData['email'],
                     "type": agentData['type'],
-                    "msg": msg,
+                    "msg": mesg,
                 }
                 db.contact.insert_one(newData)
+                msg = Message("Properties! New Message", recipients=["property@globalcaregroup.net"])
+                msg.html = str("<p>Name:&nbsp;"+str(agentData['fullname'])+"</p><p>Email:&nbsp;"+str(agentData['email'])+"</p><p> type:&nbsp;"+str(agentData['type'])+"</p><p> msg:&nbsp; "+str(mesg)+"</p>")
+                mail.send(msg)
+                msg = Message("Properties!", recipients=[str(agentData['email'])])
+                msg.html = str("<p>Dear,"+str(agentData['fullname'])+"</p><p>We have received your email, and our support team will be in touch with you soon.</p><p>Best regards,</p><p>Properties</p>")
+                mail.send(msg)
                 return "Message Sent Successfully"
         else:
             name = request.form.get('name')
             email = request.form.get('email')
-            msg = request.form.get('msg')
-            if not name or not email or not msg:
+            mesg = request.form.get('msg')
+            if not name or not email or not mesg:
                 return "Please fill all required fields"
             regex = '[^@]+@[a-zA-Z0-9]+[.][a-zA-Z]+'
             if not (re.search(regex, email)):
@@ -686,9 +736,15 @@ def contact_form():
                     "name":name,
                     "email":email,
                     "type":"unknown",
-                    "msg":msg
+                    "msg":mesg
                 }
                 db.contact.insert_one(newData)
+                msg = Message("Properties! New Message", recipients=["property@globalcaregroup.net"])
+                msg.html = str("<p>Name:&nbsp;"+str(name)+"</p><p>Email:&nbsp;"+str(email)+"</p><p> type:&nbsp;"+"unknown"+"</p><p> msg:&nbsp; "+str(mesg)+"</p>")
+                mail.send(msg)
+                msg = Message("Properties!", recipients=[str(email)])
+                msg.html = str("<p>Dear,"+str(name)+"</p><p>We have received your email, and our support team will be in touch with you soon.</p><p>Best regards,</p><p>Properties</p>")
+                mail.send(msg)
                 return "Message Sent Successfully"
     else:
         if "loggedin" in session:
@@ -995,6 +1051,212 @@ def header_search():
     except Exception as e:        
         return jsonify({"success": False, "error": str(e)})
 
+@app.route("/my-properties/<username>")
+def my_properties(username):    
+    if 'loggedin' in session:
+        if session['type'] != 'admin':
+            query = {"username":username}
+            agentData = db.agents.find_one(query) 
+            userData = db.users.find_one(query)
+            if userData: 
+                query = {"added-by":str(userData['_id']),"sold":{"$ne":True}}
+
+                properties = db.properties.find(query)
+                lists = []
+                # for loop
+                for i in properties:
+                    query = {"property_id":i["_id"]}
+                    viewsData = db.property_views.find(query)
+                    viewsLists = []
+                    for view in viewsData:
+                        view.update({"_id": str(view["_id"])})
+                        viewsLists.append(view)
+                    total_views = len(viewsLists)       
+
+                    i.update({"_id": str(i["_id"]),"total_views":total_views})
+                    lists.append(i)
+
+                return render_template("my-properties.html", properties=lists,username=session['username'])                
+            elif agentData: 
+                query = {"added-by":str(agentData['_id']),"sold":{"$ne":True}}
+                properties = db.properties.find(query)
+                lists = []
+                # for loop
+                for i in properties:
+                    query = {"property_id":i["_id"]}
+                    viewsData = db.property_views.find(query)
+                    viewsLists = []
+                    for view in viewsData:
+                        view.update({"_id": str(view["_id"])})
+                        viewsLists.append(view)
+                    total_views = len(viewsLists)       
+
+                    i.update({"_id": str(i["_id"]),"total_views":total_views})
+                    lists.append(i)
+
+                return render_template("my-properties.html", properties=lists,username=session['username'])
+        
+        else:
+            return redirect(url_for("login"))
+    else:
+        return redirect(url_for("login"))
+
+@app.route("/edit-property-for-users/<id>",methods = ['GET','POST'])
+def edit_property_for_users(id):
+    if "loggedin" in session:
+        # check if that property is uploaded by the user logged in 
+        query ={"_id":ObjectId(id)}
+        prop = db.properties.find_one(query)
+        if prop['added-by'] == session['id']:
+            if request.method  == 'POST':                
+                title = request.form.get("title")
+                price = request.form.get("price")
+                desc = request.form.get("desc")
+                city = request.form.get("city")
+                address = request.form.get("address")
+                type = request.form.get("type")
+                floor = request.form.get("floor")
+                status = request.form.get("status")
+                bedroom = request.form.get("bedroom")
+                bathroom = request.form.get("bathroom")
+                kitchen = request.form.get("kitchen")
+                area = request.form.get("area")
+                balcony = False
+                parking = False
+                lift = False
+                pool = False
+                timestamp = datetime.now()
+                if request.form.get("balcony") == "on":
+                    balcony = True
+                if request.form.get("parking") == "on":
+                    parking = True
+                if request.form.get("lift") == "on":
+                    lift = True
+                if request.form.get("pool") == "on":
+                    pool = True
+                pictures = request.files.getlist("images[]") 
+                if pictures[0]:
+                    filenames = []
+                    for picture in pictures:
+                        if picture and allowed_file(picture.filename):
+                            filename = secure_filename(picture.filename)
+                            picture.save(
+                                os.path.join(PROPERTIES_FOLDER, filename))
+                            filename=filenames.append(filename)                 
+                            # compress image and set dimensions
+                            # newimage = Image.open(os.path.join(PROPERTIES_FOLDER, str(filename)))
+                            # newimage.resize((368, 287))
+                            # newimage.save(os.path.join(PROPERTIES_FOLDER, str(filename)), quality=95) 
+                        else:
+                            return "picture not found or incorrect format"
+                            # return render_template("edit-property-for-users.html",username = session['username'],msg=msg)
+                    # fetch the last item from the list that is display_pic 
+                    display_pic = filenames[-1] 
+                    # delete the last item from the list 
+                    del filenames[-1]               
+
+                    newData= {
+                        "$set" : {
+                        "title":title,
+                        "price":float(price),
+                        "desc":desc,
+                        "city":city,
+                        "address":address,
+                        "type":type,
+                        "floor":floor,
+                        "status":status,
+                        "bedroom":int(bedroom),
+                        "bathroom":int(bathroom),
+                        "kitchen":int(kitchen),
+                        "area":int(area),
+                        "balcony":balcony, 
+                        "parking":parking, 
+                        "lift":lift,
+                        "pool":pool,
+                        "timestamp":timestamp,
+                        "pictures":filenames,
+                        "display_pic":display_pic,
+                        "added-by":session['id'],
+                    } 
+                    }
+                    filter = {'_id': ObjectId(id)}
+                    db.properties.update_one(filter, newData)
+                    return redirect ("/single-properties/"+id)
+                else:
+                    newData= {
+                        "$set" : {
+                        "title":title,
+                        "price":float(price),
+                        "desc":desc,
+                        "city":city,
+                        "address":address,
+                        "type":type,
+                        "floor":floor,
+                        "status":status,
+                        "bedroom":int(bedroom),
+                        "bathroom":int(bathroom),
+                        "kitchen":int(kitchen),
+                        "area":int(area),
+                        "balcony":balcony, 
+                        "parking":parking, 
+                        "lift":lift,
+                        "pool":pool,
+                        "timestamp":timestamp,
+                        "added-by":session['id'],
+                    } 
+                    }
+                    filter = {'_id': ObjectId(id)}
+                    db.properties.update_one(filter, newData)
+                    return redirect ("/single-properties/"+id)
+
+
+
+                
+            else:
+                query = {'_id': ObjectId(id)}
+                propertyData = db.properties.find_one(query)
+                # return str(propertyData)
+                return render_template("/edit-property-for-users.html",username=session['username'], property=propertyData)    
+        else:
+            return redirect(url_for("login2"))
+    else:
+        return redirect(url_for("login2"))
+
+@app.route("/delete-property-for-users/<id>")
+def delete_property_for_users(id):
+    if "loggedin" in session:
+        # check if that property is uploaded by the user logged in 
+        query ={"_id":ObjectId(id)}
+        prop = db.properties.find_one(query)
+        if prop['added-by'] == session['id']:
+                query = {'_id': ObjectId(id)}
+                db.properties.delete_one(query)
+                return redirect("/my-properties/"+session['username'])    
+        else:
+            return redirect(url_for("login2"))
+    else:
+        return redirect(url_for("login2"))
+
+@app.route("/mark-property-as-sold/<id>")
+def mark_property_as_sold(id):
+    if "loggedin" in session:
+        # check if that property is uploaded by the user logged in 
+        query ={"_id":ObjectId(id)}
+        prop = db.properties.find_one(query)
+        if prop['added-by'] == session['id']:
+                newData= {
+                        "$set" : {
+                        "sold":True,
+                    } 
+                    }
+                filter = {'_id': ObjectId(id)}
+                db.properties.update_one(filter, newData)
+                return redirect("/my-properties/"+session['username'])  
+        else:
+            return redirect(url_for("login2"))
+    else:
+        return redirect(url_for("login2"))
+
 # -x-x-x-x-x-x-x-x-x-x-x-   ADMIN DASHBOARD START   -x-x-x-x-x-x-x-x-x-x-x- 
 
 @app.route("/admin-dashboard")
@@ -1006,8 +1268,19 @@ def admin_dashboard():
             session.pop('username', None)
             session.pop('type', None)
             return render_template("admin-login.html")
-        else:                 
-            return render_template("dashboard.html")        
+        else:             
+            count1 = db.users.count()                 
+            count2 = db.agents.count()                 
+            count3 = db.properties.count()                 
+            count4 = db.contact.count()
+            count5 = db.properties.count({'type':'residential'})               
+            count6 = db.properties.count({'type':'commercial'})               
+            count7 = db.properties.count({'type':'industrial'})               
+            count8 = db.properties.count({'type':'vacation'})               
+            count9 = db.properties.count({'type':'special'})               
+            count10 = db.properties.count({'status':'sale'})               
+            count11 = db.properties.count({'status':'rent'})               
+            return render_template("dashboard.html",users=count1,agents=count2,properties=count3,messages=count4,residential=count5,commercial=count6,industrial=count7,vacation=count8,special=count9,sale=count10,rent=count11)        
             
     else:
         return render_template("admin-login.html")
@@ -1244,6 +1517,106 @@ def delete_message(id):
             return redirect(url_for('admin_login'))
     else:
         return redirect(url_for('admin_login'))
+
+@app.route("/featured-properties")
+def featured_properties():
+    if 'loggedin' in session:
+        if session['type'] == 'admin':
+            query = {'featured':True}
+            featuredProperties = db.properties.find(query)
+            Lists = []
+            for i in featuredProperties:
+                i.update({"_id": str(i["_id"])})
+                Lists.append(i)
+            return render_template("featured-properties-admin.html",properties=Lists)
+        else:
+            return redirect(url_for("admin_login"))
+    else:
+        return redirect(url_for("admin_login"))
+
+@app.route("/remove-featured-property/<id>")
+def remove_featured_property(id):
+    if 'loggedin' in session:
+        if session['type'] == 'admin':
+            query = {'_id':ObjectId(id)}
+            Properties = db.properties.find_one(query)
+            if Properties:
+                newvalues = {"$set": {'featured': False}}
+                db.properties.update_one(query, newvalues)
+                return redirect(url_for("featured_properties"))                
+            else:
+                return "Invalid property or Property doesn't exist"
+        else:
+            return redirect(url_for("admin_login"))
+    else:
+        return redirect(url_for("admin_login"))
+
+@app.route("/feature-a-new-property", methods = ['GET','POST'])
+def feature_a_new_property():    
+    if 'loggedin' in session:
+        if session['type'] == 'admin':
+            query = {'featured':False}
+            nonfeaturedProperties = db.properties.find(query)
+            Lists = []
+            for i in nonfeaturedProperties:
+                i.update({"_id": str(i["_id"])})
+                Lists.append(i)
+            return render_template("feature-a-new-property.html",properties=Lists)
+        else:
+            return redirect(url_for("admin_login"))
+    else:
+        return redirect(url_for("admin_login"))
+
+@app.route("/add-to-featured-property/<id>")
+def add_to_featured_property(id):    
+    if 'loggedin' in session:
+        if session['type'] == 'admin':
+            query = {'_id':ObjectId(id)}
+            Properties = db.properties.find_one(query)
+            if Properties:
+                newvalues = {"$set": {'featured': True}}
+                db.properties.update_one(query, newvalues)
+                return redirect(url_for("feature_a_new_property"))                
+            else:
+                return "Invalid property or Property doesn't exist"
+        else:
+            return redirect(url_for("admin_login"))
+    else:
+        return redirect(url_for("admin_login"))
+
+@app.route("/reviews")
+def reviews():    
+    if 'loggedin' in session:
+        if session['type'] == 'admin':
+            reviews = db.reviews.find()
+            Lists = []
+            for i in reviews:
+                i.update({"_id": str(i["_id"]),"property_id": str(i["property_id"])})
+                Lists.append(i)
+            return render_template("reviews.html",reviews=Lists)
+        else:
+            return redirect(url_for("admin_login"))
+    else:
+        return redirect(url_for("admin_login"))
+
+@app.route("/delete-review/<id>")
+def delete_review(id):    
+    if 'loggedin' in session:
+        if session['type'] == 'admin': 
+            query = {'_id':ObjectId(id)}
+            db.reviews.delete_one(query)
+            return redirect(url_for('reviews'))
+        else:
+            return redirect(url_for("admin_login"))
+    else:
+        return redirect(url_for("admin_login"))
+
+
+
+
+
+
+    
 
     
 

@@ -1,128 +1,133 @@
-        
 {% extends 'layout.html' %}
 
 {% block head %}
 <title>Login</title>
 {% endblock %}
 {% block content %}
-    <title>Haven | Login</title>
+<title>Haven | Login</title>
 
-        <!--Breadcrumbs start-->
-        <div class="breadcrumbs overlay-black">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="breadcrumbs-inner">
-                            <div class="breadcrumbs-title text-center">
-                                <h1>Login</h1>
-                            </div>
-                            <div class="breadcrumbs-menu">
-                                <ul>
-                                    <li><a href="index.html">Home /</a></li>
-                                    <li>Login</li>
-                                </ul>
-                            </div>
-                        </div>
+<!--Breadcrumbs start-->
+<div class="breadcrumbs overlay-black">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="breadcrumbs-inner">
+                    <div class="breadcrumbs-title text-center">
+                        <h1>Login</h1>
+                    </div>
+                    <div class="breadcrumbs-menu">
+                        <ul>
+                            <li><a href="index.html">Home /</a></li>
+                            <li>Login</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <!--Breadcrumbs end-->
+    </div>
+</div>
+<!--Breadcrumbs end-->
 
-        {% if success_msg %}
-        <!-- alert  -->
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Success!</strong> {{success_msg}}.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-        {% endif %} 
+{% if success_msg %}
+<!-- alert  -->
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success!</strong> {{success_msg}}.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{% endif %}
 
-        <!--Register page inner start-->
-        <div class="register-page-inner ptb-100 bg-1">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-6 col-12">
-                        <div class="register-page-form">
-                            <div class="account-title">
-                                <h5>Login</h5>
-                            </div>
-                            <form action="/login2" method="post">
-                                <div class="username">
-                                    <input type="text" name="username" placeholder="Username">
-                                </div>
-                                <div class="password">
-                                    <input type="password" name="password" placeholder="Password">
-                                </div>
-                                <div class="agree-text">
-                                    <p>
-                                        <label>
-                                            <input type="checkbox"> <span>Remember me</span>
-                                        </label>
-                                    </p>
-                                </div>
-                                <div class="lost-password">
-                                    <p><a href="#">Lost your password?</a></p>
-                                </div>                        
-                                <div class="msg" style="color: red;">{{ msg }}</div>
-                                <div class="login">
-                                    <button type="submit">Sign in</button>
-                                </div>
-                            </form>
-                            <div class="login-with-another">
-                                <a class="facebook" href="#"><i class="icofont icofont-social-facebook"></i> Login with Facebook</a>
-                                <a class="linkedin" href="#"><i class="icofont icofont-brand-linkedin"></i> Login with Linkedin</a>
-                                <a class="google" href="#"><i class="icofont icofont-social-google-plus"></i> Login with Google</a>
-                            </div>
+<!--Register page inner start-->
+<div class="register-page-inner ptb-100 bg-1">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-12">
+                <div class="register-page-form">
+                    <div class="account-title">
+                        <h5>Login</h5>
+                    </div>
+                    <form action="/login2" method="post">
+                        <div class="username">
+                            <input type="text" name="username" placeholder="Username">
                         </div>
+                        <div class="password">
+                            <input type="password" name="password" placeholder="Password">
+                        </div>
+                        <div class="agree-text">
+                            <p>
+                                <label>
+                                    <input type="checkbox"> <span>Remember me</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="lost-password">
+                            <p><a href="#">Lost your password?</a></p>
+                        </div>
+                        <div class="msg" style="color: red;">{{ msg }}</div>
+                        <div class="login">
+                            <button type="submit">Sign in</button>
+                        </div>
+                    </form>
+                    <div class="login-with-another">
+                        <a class="facebook" href="#"><i class="icofont icofont-social-facebook"></i> Login with
+                            Facebook</a>
+                        <a class="linkedin" href="#"><i class="icofont icofont-brand-linkedin"></i> Login with
+                            Linkedin</a>
+                        <a class="google" href="#"><i class="icofont icofont-social-google-plus"></i> Login with
+                            Google</a>
+                    </div>
+                    <div class="register2">
+                        <a href="/register"><button>Register</button></a>
                     </div>
                 </div>
             </div>
         </div>
-        <!--Register page inner end-->
+    </div>
+</div>
+<!--Register page inner end-->
 
-        <!--Brand section start-->
-        <div class="brand-section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="brand-list owl-carousel">
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
-                                </div>
-                                <div class="single-brand">
-                                    <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
-                                </div>
-                            </div>
-                        </div>
+<!--Brand section start-->
+<div class="brand-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="brand-list owl-carousel">
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
+                    </div>
+                    <div class="single-brand">
+                        <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
                     </div>
                 </div>
             </div>
-            <!--Brand section end-->
-            
+        </div>
+    </div>
+</div>
+<!--Brand section end-->
+
 {% endblock %}

@@ -1,0 +1,622 @@
+        
+{% extends 'layout.html' %}
+
+{% block head %}
+<title>Edit property</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- input images  -->
+
+<link rel="stylesheet" href="/static/css/image-uploader.min.css">
+
+<!-- ..  -->
+{% endblock %}
+{% block content %}
+
+        <!--Breadcrumbs start-->
+        <div class="breadcrumbs overlay-black">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="breadcrumbs-inner">
+                            <div class="breadcrumbs-title text-center">
+                                <h1>Edit PROPERTY</h1>
+                            </div>
+                            <div class="breadcrumbs-menu">
+                                <ul>
+                                    <li><a href="/">Home /</a></li>
+                                    <li>Edit property</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Breadcrumbs end-->
+        {% if msg %}
+        <!-- alert  -->
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>Oops!</strong> {{msg}}.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endif %}  
+
+        <!-- Add property page start -->
+        <div class="add-property-page pt-130">
+            <form action="/edit-property-for-users/{{property._id}}" enctype="multipart/form-data" method="post">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="add-property-box step-1">
+                                <div class="step-title">
+                                    <h4>Step # 1</h4>
+                                </div>
+                                <div class="basic-information-box">
+                                    <div class="information-title">
+                                        <h5>Basic Information</h5>
+                                    </div>
+                                    <div class="basic-information-form">
+                                        <div class="row">
+                                            <div class="col-lg-9 col-md-7 col-12">
+                                                <div class="input-file">
+                                                    <label>Property Title</label>
+                                                    <input type="text" name="title" value="{{property.title}}" placeholder="Enter your title here">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-5 col-12">
+                                                <div class="input-file">
+                                                    <label>Price</label>
+                                                    <input type="number" name="price" value="{{property.price}}" placeholder="Price $">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-12">
+                                                <div class="information-text">
+                                                    <label>Property Text</label>
+                                                    <textarea name="desc" placeholder="Write here">{{property.desc}}</textarea>
+                                                    <!-- <input type="text" value='{{property.desc}}'>  -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add-property-box step-2">
+                                <div class="step-title">
+                                    <h4>Step # 2</h4>
+                                </div>
+                                <div class="information-title">
+                                    <h5>Basic Information</h5>
+                                </div>
+                                <div class="details-information-box">
+                                    <div class="row">
+                                        <div class="col-md-6 col-12">
+                                            <div class="input-file">
+                                                <label>City</label>
+                                                <select class="selectpicker" name="city" value='{{property.city}}' title="City" data-hide-disabled="true" data-live-search="true">
+                                                    {% if property.city == "karachi" %}
+                                                    <option selected value="karachi">Karachi</option> 
+                                                    <option value="islamabad">Islamabad</option>
+                                                    <option value="lahore">Lahore</option>
+                                                    {% elif property.city == "islamabad" %}
+                                                    <option value="karachi">Karachi</option> 
+                                                    <option selected value="islamabad">Islamabad</option>
+                                                    <option value="lahore">Lahore</option>
+                                                    {% elif property.city == "lahore" %}
+                                                    <option value="karachi">Karachi</option> 
+                                                    <option value="islamabad">Islamabad</option>
+                                                    <option selected value="lahore">Lahore</option>
+                                                    {% else %}
+                                                    <option value="karachi">Karachi</option> 
+                                                    <option value="islamabad">Islamabad</option>
+                                                    <option value="lahore">Lahore</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-12">
+                                            <div class="input-file">
+                                                <!-- <select class="selectpicker" title="Sub - Location" data-hide-disabled="true" data-live-search="true">
+                                                    <optgroup disabled="disabled" label="disabled">
+                                                        <option>Hidden</option>
+                                                    </optgroup>
+                                                    <optgroup label="Australia">
+                                                        <option>southeastern coast</option>
+                                                        <option>southeastern tip</option>
+                                                        <option>northwest corner</option>
+                                                    </optgroup>
+                                                    <optgroup label="USA">
+                                                        <option>Charleston</option>
+                                                        <option>St. Petersburg</option>
+                                                        <option>Newport</option>
+                                                    </optgroup>
+                                                </select> -->
+
+                                                <div class="input-file">
+                                                    <label>Address</label>
+                                                    <input type="text" value='{{property.address}}' name="address" placeholder="Address">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="input-file">
+                                                <label>Property type</label>
+                                                <select class="selectpicker" name="type" value='{{property.type}}' title="Property type" data-hide-disabled="true">
+                                                    {% if property.type == "residential" %}
+                                                    <option selected value="residential">Residential Property</option>
+                                                    <option value="commercial">Commercial Property</option>
+                                                    <option value="industrial">Industrial Property</option>
+                                                    <option value="vacation">Vacation Property</option>
+                                                    <option value="special">Special Purpose Property</option>
+                                                    {% elif property.type == "commercial" %}
+                                                    <option value="residential">Residential Property</option>
+                                                    <option selected value="commercial">Commercial Property</option>
+                                                    <option value="industrial">Industrial Property</option>
+                                                    <option value="vacation">Vacation Property</option>
+                                                    <option value="special">Special Purpose Property</option>
+                                                    {% elif property.type == "industrial" %}
+                                                    <option value="residential">Residential Property</option>
+                                                    <option value="commercial">Commercial Property</option>
+                                                    <option selected value="industrial">Industrial Property</option>
+                                                    <option value="vacation">Vacation Property</option>
+                                                    <option value="special">Special Purpose Property</option>
+                                                    {% elif property.type == "vacation" %}
+                                                    <option value="residential">Residential Property</option>
+                                                    <option value="commercial">Commercial Property</option>
+                                                    <option value="industrial">Industrial Property</option>
+                                                    <option selected value="vacation">Vacation Property</option>
+                                                    <option value="special">Special Purpose Property</option>
+                                                    {% elif property.type == "special" %}
+                                                    <option value="residential">Residential Property</option>
+                                                    <option value="commercial">Commercial Property</option>
+                                                    <option value="industrial">Industrial Property</option>
+                                                    <option value="vacation">Vacation Property</option>
+                                                    <option selected value="special">Special Purpose Property</option>
+                                                    {% else %}
+                                                    <option value="residential">Residential Property</option>
+                                                    <option value="commercial">Commercial Property</option>
+                                                    <option value="industrial">Industrial Property</option>
+                                                    <option value="vacation">Vacation Property</option>
+                                                    <option value="special">Special Purpose Property</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="input-file">
+                                                <label>Floor</label>
+                                                <select class="selectpicker" name="floor" value='{{property.floor}}' title="Floor" data-hide-disabled="true">
+                                                    {% if property.floor == "Ground"%}
+                                                    <option selected value="Ground">Ground Floor</option>
+                                                    <option value="1st">First Floor</option>
+                                                    <option value="2nd">Second Floor</option>
+                                                    <option value="3rd">Third Floor</option>
+                                                    <option value="4th">Fourth Floor</option>
+                                                    {% elif property.floor == "1st"%}
+                                                    <option value="Ground">Ground Floor</option>
+                                                    <option selected value="1st">First Floor</option>
+                                                    <option value="2nd">Second Floor</option>
+                                                    <option value="3rd">Third Floor</option>
+                                                    <option value="4th">Fourth Floor</option>
+                                                    {% elif property.floor == "2nd"%}
+                                                    <option value="Ground">Ground Floor</option>
+                                                    <option value="1st">First Floor</option>
+                                                    <option selected value="2nd">Second Floor</option>
+                                                    <option value="3rd">Third Floor</option>
+                                                    <option value="4th">Fourth Floor</option>
+                                                    {% elif property.floor == "3rd"%}
+                                                    <option value="Ground">Ground Floor</option>
+                                                    <option value="1st">First Floor</option>
+                                                    <option value="2nd">Second Floor</option>
+                                                    <option selected value="3rd">Third Floor</option>
+                                                    <option value="4th">Fourth Floor</option>
+                                                    {% elif property.floor == "4th"%}
+                                                    <option value="Ground">Ground Floor</option>
+                                                    <option value="1st">First Floor</option>
+                                                    <option value="2nd">Second Floor</option>
+                                                    <option value="3rd">Third Floor</option>
+                                                    <option selected value="4th">Fourth Floor</option>
+                                                    {% else %}
+                                                    <option value="Ground">Ground Floor</option>
+                                                    <option value="1st">First Floor</option>
+                                                    <option value="2nd">Second Floor</option>
+                                                    <option value="3rd">Third Floor</option>
+                                                    <option value="4th">Fourth Floor</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 col-12">
+                                            <div class="input-file">
+                                                <label>Status</label>
+                                                <select class="selectpicker" name="status" value='{{property.status}}' title="Sale" data-hide-disabled="true">
+                                                    {% if property.status == "sale" %}
+                                                    <option selected value="sale">For Sale</option>
+                                                    <option value="rent">For Rent</option>
+                                                    {% elif property.status == "rent" %}
+                                                    <option value="sale">For Sale</option>
+                                                    <option selected value="rent">For Rent</option>
+                                                    {% else %}
+                                                    <option value="sale">For Sale</option>
+                                                    <option value="rent">For Rent</option>
+                                                    {% endif %}
+                                             </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <div class="input-file">
+                                                <label>No. of Bedrooms</label>
+                                                <select class="selectpicker" name="bedroom" value='{{property.bedroom}}' title="No. of Bedrooms" data-hide-disabled="true">
+                                                    {% if property.bedroom == 1 %}
+                                                        <option selected value="1">1 Bedroom</option>
+                                                        <option value="2">2 Bedrooms</option>
+                                                        <option value="3">3 Bedrooms</option>
+                                                        <option value="4">4 Bedrooms</option>
+                                                        <option  value="5">5 Bedrooms</option>
+                                                    {% elif property.bedroom == 2 %}
+                                                        <option value="1">1 Bedroom</option>
+                                                        <option selected value="2">2 Bedrooms</option>
+                                                        <option value="3">3 Bedrooms</option>
+                                                        <option value="4">4 Bedrooms</option>
+                                                        <option  value="5">5 Bedrooms</option>
+                                                    {% elif property.bedroom == 3 %}
+                                                        <option value="1">1 Bedroom</option>
+                                                        <option value="2">2 Bedrooms</option>
+                                                        <option selected value="3">3 Bedrooms</option>
+                                                        <option value="4">4 Bedrooms</option>
+                                                        <option  value="5">5 Bedrooms</option>
+                                                    {% elif property.bedroom == 4 %}
+                                                        <option value="1">1 Bedroom</option>
+                                                        <option value="2">2 Bedrooms</option>
+                                                        <option value="3">3 Bedrooms</option>
+                                                        <option selected value="4">4 Bedrooms</option>
+                                                        <option  value="5">5 Bedrooms</option>
+                                                    {% elif property.bedroom == 5 %}
+                                                        <option value="1">1 Bedroom</option>
+                                                        <option value="2">2 Bedrooms</option>
+                                                        <option value="3">3 Bedrooms</option>
+                                                        <option value="4">4 Bedrooms</option>
+                                                        <option selected  value="5">5 Bedrooms</option>
+                                                    {% else %}
+                                                        <option value="1">1 Bedroom</option>
+                                                        <option value="2">2 Bedrooms</option>
+                                                        <option value="3">3 Bedrooms</option>
+                                                        <option value="4">4 Bedrooms</option>
+                                                        <option value="5">5 Bedrooms</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <div class="input-file">
+                                                <label>No. of Bathrooms</label>
+                                                <select class="selectpicker" name="bathroom" value='{{property.bathroom}}' title="No. of Bathrooms" data-hide-disabled="true">
+                                                    {% if property.bathroom == 1 %}
+                                                        <option selected value="1">1 Bathroom</option>
+                                                        <option value="2">2 Bathrooms</option>
+                                                        <option value="3">3 Bathrooms</option>
+                                                        <option value="4">4 Bathrooms</option>
+                                                        <option value="5">5 Bathrooms</option>
+                                                    {% elif property.bathroom == 2 %}
+                                                        <option value="1">1 Bathroom</option>
+                                                        <option selected value="2">2 Bathrooms</option>
+                                                        <option value="3">3 Bathrooms</option>
+                                                        <option value="4">4 Bathrooms</option>
+                                                        <option value="5">5 Bathrooms</option>
+                                                    {% elif property.bathroom == 3 %}
+                                                        <option value="1">1 Bathroom</option>
+                                                        <option value="2">2 Bathrooms</option>
+                                                        <option selected value="3">3 Bathrooms</option>
+                                                        <option value="4">4 Bathrooms</option>
+                                                        <option value="5">5 Bathrooms</option>
+                                                    {% elif property.bathroom == 4 %}
+                                                        <option value="1">1 Bathroom</option>
+                                                        <option value="2">2 Bathrooms</option>
+                                                        <option value="3">3 Bathrooms</option>
+                                                        <option selected value="4">4 Bathrooms</option>
+                                                        <option value="5">5 Bathrooms</option>
+                                                    {% elif property.bathroom == 5 %}
+                                                        <option value="1">1 Bathroom</option>
+                                                        <option value="2">2 Bathrooms</option>
+                                                        <option value="3">3 Bathrooms</option>
+                                                        <option value="4">4 Bathrooms</option>
+                                                        <option selected value="5">5 Bathrooms</option>
+                                                    {% else %}
+                                                        <option value="1">1 Bathroom</option>
+                                                        <option value="2">2 Bathrooms</option>
+                                                        <option value="3">3 Bathrooms</option>
+                                                        <option value="4">4 Bathrooms</option>
+                                                        <option value="5">5 Bathrooms</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <div class="input-file">
+                                                <label>No. of Kitchens</label>
+                                                <select class="selectpicker" name="kitchen" value='{{property.kitchen}}' title="No of Kitchens" data-hide-disabled="true">
+                                                    {% if property.kitchen == 1 %}
+                                                        <option selected value="1">1 Kitchen</option>
+                                                        <option value="2">2 Kitchen</option>
+                                                        <option value="3">3 Kitchen</option>
+                                                        <option value="4">4 Kitchen</option>
+                                                        <option value="5">5 Kitchen</option>
+                                                        <option value="6">6 Kitchen</option>
+                                                    {% elif property.kitchen == 2 %}
+                                                        <option value="1">1 Kitchen</option>
+                                                        <option selected value="2">2 Kitchen</option>
+                                                        <option value="3">3 Kitchen</option>
+                                                        <option value="4">4 Kitchen</option>
+                                                        <option value="5">5 Kitchen</option>
+                                                        <option value="6">6 Kitchen</option>
+                                                    {% elif property.kitchen == 3 %}
+                                                        <option value="1">1 Kitchen</option>
+                                                        <option value="2">2 Kitchen</option>
+                                                        <option selected value="3">3 Kitchen</option>
+                                                        <option value="4">4 Kitchen</option>
+                                                        <option value="5">5 Kitchen</option>
+                                                        <option value="6">6 Kitchen</option>
+                                                    {% elif property.kitchen == 4 %}
+                                                        <option value="1">1 Kitchen</option>
+                                                        <option value="2">2 Kitchen</option>
+                                                        <option value="3">3 Kitchen</option>
+                                                        <option selected value="4">4 Kitchen</option>
+                                                        <option value="5">5 Kitchen</option>
+                                                        <option value="6">6 Kitchen</option>
+                                                    {% elif property.kitchen == 5 %}
+                                                        <option value="1">1 Kitchen</option>
+                                                        <option value="2">2 Kitchen</option>
+                                                        <option value="3">3 Kitchen</option>
+                                                        <option value="4">4 Kitchen</option>
+                                                        <option selected value="5">5 Kitchen</option>
+                                                        <option value="6">6 Kitchen</option>
+                                                    {% elif property.kitchen == 6 %}
+                                                        <option value="1">1 Kitchen</option>
+                                                        <option value="2">2 Kitchen</option>
+                                                        <option value="3">3 Kitchen</option>
+                                                        <option value="4">4 Kitchen</option>
+                                                        <option value="5">5 Kitchen</option>
+                                                        <option selected value="6">6 Kitchen</option>
+                                                    {% else %}
+                                                        <option value="1">1 Kitchen</option>
+                                                        <option value="2">2 Kitchen</option>
+                                                        <option value="3">3 Kitchen</option>
+                                                        <option value="4">4 Kitchen</option>
+                                                        <option value="5">5 Kitchen</option>
+                                                        <option value="6">6 Kitchen</option>
+                                                    {% endif %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-3 col-md-6 col-12">
+                                            <div class="input-file">
+                                                <label>Area (sqft)</label>
+                                                <input type="text" name="area" value='{{property.area}}' placeholder="Area (sqft)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="add-property-box step-3">
+                                <div class="step-title">
+                                    <h4>Step # 3</h4>
+                                </div>
+                                <div class="image-upload-inner">
+                                    <div class="information-title">
+                                        <h5>Image gallery</h5>
+                                    </div>                                        
+
+                                    <!-- ...input images ...  -->
+                                    <div class="form-group col-md-12 input-images"></div>
+                                    <!-- ...  -->
+
+                                    <!-- <div class="image-upload-box">
+                                        <label class="custom-file-upload">
+                                            <span><i class="icofont icofont-folder-open"></i> Browse Images</span> <input name="pictures" type="file" multiple>
+                                        </label>
+                                    </div> -->
+                                </div>
+                                <div class="image-upload-inner mt-4">
+                                    <div class="information-title">
+                                        <h5>Display Picture</h5>
+                                    </div> 
+                                    <!-- ...input images2 ...  -->
+                                    <div class="form-group col-md-12 input-images2"></div>
+                                    <!-- ...  -->                                  
+                                    
+                                    <!-- <div id="profile-container">
+                                        <img id="profileImage" width="230px" height="219px" src="/static/img/default_profile.jpg" />
+                                    </div>
+                                    <input id="imageUpload" type="file" placeholder="photo" capture class="fom-control" name="display_pic" style="visibility: hidden;"> -->
+                                </div>
+                                <!-- <div class="video-upload-inner">
+                                    <div class="information-title">
+                                        <h5>Video Presentation</h5>
+                                    </div>
+                                    <div class="video-upload-box">
+                                        <label class="custom-video-upload">
+                                            <span>Add Video</span> <input type="file">
+                                        </label>
+                                    </div>
+                                </div> -->
+                            </div>
+                            <div class="add-property-box step-4">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-5 col-12">
+                                        <div class="property-features">
+                                            <div class="information-title">
+                                                <h5>Property Features</h5>
+                                            </div>
+                                        </div>
+                                        <div class="features-box">
+                                            <div class="row">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="feature-check box3">
+                                                        {% if property.balcony == True %}
+                                                        <input id="remember-3" checked name="balcony" type="checkbox">
+                                                        <label for="remember-3">Balcony</label>
+                                                        {% else %}
+                                                        <input id="remember-3" name="balcony" type="checkbox">
+                                                        <label for="remember-3">Balcony</label>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12 pd-left">
+                                                    <div class="feature-check box6">
+                                                        {% if property.parking == True%}
+                                                        <input id="remember-6" checked name="parking" type="checkbox">
+                                                        <label for="remember-6">Parking</label>
+                                                        {% else %}
+                                                        <input id="remember-6" name="parking" type="checkbox">
+                                                        <label for="remember-6">Parking</label>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="feature-check box7">                                                        
+                                                        {% if property.lift == True%}
+                                                        <input id="remember-7" checked name="lift" type="checkbox">
+                                                        <label for="remember-7">Lift</label>
+                                                        {% else %}
+                                                        <input id="remember-7" name="lift" type="checkbox">
+                                                        <label for="remember-7">Lift</label>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="feature-check box8">                                                       
+                                                        {% if property.pool == True%}
+                                                        <input id="remember-8" checked name="pool" type="checkbox">
+                                                        <label for="remember-8">Pool</label>
+                                                        {% else %}
+                                                        <input id="remember-8" name="pool" type="checkbox">
+                                                        <label for="remember-8">Pool</label>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-lg-8 col-md-7 col-12">
+                                        <div class="place-map">
+                                            <div class="information-title">
+                                                <h5>Place on Map</h5>
+                                            </div>
+                                            <div class="place-map-inner">
+                                                <div id="googleMap-2" style="width:100%;height:365px;"></div>
+                                            </div>
+                                        </div>
+                                   </div> -->
+                                </div>
+                            </div>
+                            <div class="add-property-submit">
+                                <button type="submit">UPDATE CHANGES</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- Add property page End -->
+
+        <!--Brand section start-->
+        <div class="brand-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="brand-list owl-carousel">
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/1.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/2.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/3.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/4.png" alt=""></a>
+                                </div>
+                                <div class="single-brand">
+                                    <a href="#"><img src="/static/img/brand/5.png" alt=""></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Brand section end-->
+            <script>
+                
+    $("#profileImage").click(function (e) {
+        $("#imageUpload").click();
+    });
+
+    function fasterPreview(uploader) {
+        if (uploader.files && uploader.files[0]) {
+            $('#profileImage').attr('src',
+                window.URL.createObjectURL(uploader.files[0]));
+        }
+    }
+
+    $("#imageUpload").change(function () {
+        fasterPreview(this);
+    });
+            </script>
+
+{% block scripts %}
+<!-- input images  -->
+<script src="/static/js/image-uploader.min.js"></script>
+<!-- ...  -->
+{% endblock %}
+
+<!-- input images  -->
+<script>
+
+    $(function(){
+    
+        $('.input-images').imageUploader(
+        {
+        extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
+        mimes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
+        maxSize: undefined,
+        maxFiles: 15,
+    }
+        );
+    });
+    
+</script>
+<!-- ...  -->
+<!-- input images2  -->
+<script>
+
+    $(function(){
+    
+        $('.input-images2').imageUploader(
+        {
+        extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
+        mimes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
+        maxSize: undefined,
+        maxFiles: 1,
+    }
+        );
+    });
+    
+</script>
+<!-- ...  -->
+            
+{% endblock %}

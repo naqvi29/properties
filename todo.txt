@@ -1,8 +1,6 @@
-add property mai select pictures mai pictures show karwao. or price set karo agar , araha hai bech mai tu 500 error araha hai. or steps ki jaga slider lagado.
-notification reh gayi hai.
-admin dashboard banana hai.
-search filters mai masla horaha hai.
 
-message dikhane keliye form mai ye id lagado id="contact-form"
-or </form> khatam hone py 1 line pehle ye line lagado  <p class="form-messege"></p>
-iske baad tum jab bhi return karogy tu sahi show hoga bs masla ye hai ke agar koi error aya tu wo bhi show hoga bohat bara.
+notification reh gayi hai.
+search filters mai masla horaha hai.
+register form mai profile pic 
+
+

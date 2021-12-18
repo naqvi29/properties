@@ -3295,15 +3295,34 @@ article blockquote {
   text-transform: capitalize;
   transition: all 0.3s ease 0s;
 }
+.register2>a>button {
+  background: #f9c322 none repeat scroll 0 0;
+  border: medium none;
+  color: #000000;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 400;
+  height: 40px;
+  padding: 0 140px;
+  text-transform: capitalize;
+  transition: all 0.3s ease 0s;
+}
 
 .register,
 .login {
   padding-top: 20px;
   text-align: center;
 }
+.register2 {
+  padding-top: 20px;
+  text-align: center;
+}
 
 .register>button:hover,
 .login>button:hover {
+  opacity: 0.9;
+}
+.register2>button:hover {
   opacity: 0.9;
 }
 

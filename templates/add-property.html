@@ -4,6 +4,11 @@
 {% block head %}
 <title>Haven | Add property</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!-- input images  -->
+
+<link rel="stylesheet" href="/static/css/image-uploader.min.css">
+
+<!-- ..  -->
 {% endblock %}
 {% block content %}
 
@@ -63,7 +68,7 @@
                                             <div class="col-lg-3 col-md-5 col-12">
                                                 <div class="input-file">
                                                     <label>Price</label>
-                                                    <input type="text" name="price" placeholder="Price $">
+                                                    <input type="number" name="price" placeholder="Price $">
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-12">
@@ -157,8 +162,8 @@
                                             <div class="input-file">
                                                 <label>Status</label>
                                                 <select class="selectpicker" name="status" title="Sale" data-hide-disabled="true">
-                                                    <option>sale</option>
-                                                    <option>rent</option>
+                                                    <option value="sale">For Sale</option>
+                                                    <option value="rent">For Rent</option>
                                                     <!-- <option>sale 3</option>
                                                     <option>sale 4</option>
                                                     <option>sale 5</option>
@@ -213,8 +218,8 @@
                                         </div>
                                         <div class="col-lg-3 col-md-6 col-12">
                                             <div class="input-file">
-                                                <label>Area (quft)</label>
-                                                <input type="text" name="area" placeholder="Area (quft)">
+                                                <label>Area (sqft)</label>
+                                                <input type="text" name="area" placeholder="Area (sqft)">
                                             </div>
                                         </div>
                                     </div>
@@ -227,30 +232,30 @@
                                 <div class="image-upload-inner">
                                     <div class="information-title">
                                         <h5>Image gallery</h5>
-                                    </div>
+                                    </div>                                        
 
-                                    <div class="image-upload-box">
+                                    <!-- ...input images ...  -->
+                                    <div class="form-group col-md-12 input-images"></div>
+                                    <!-- ...  -->
+
+                                    <!-- <div class="image-upload-box">
                                         <label class="custom-file-upload">
                                             <span><i class="icofont icofont-folder-open"></i> Browse Images</span> <input name="pictures" type="file" multiple>
                                         </label>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="image-upload-inner mt-4">
                                     <div class="information-title">
                                         <h5>Display Picture</h5>
-                                    </div>                                   
+                                    </div> 
+                                    <!-- ...input images2 ...  -->
+                                    <div class="form-group col-md-12 input-images2"></div>
+                                    <!-- ...  -->                                  
                                     
-                                    <div id="profile-container">
+                                    <!-- <div id="profile-container">
                                         <img id="profileImage" width="230px" height="219px" src="/static/img/default_profile.jpg" />
                                     </div>
-                                    <!-- <input id="imageUpload" type="file" name="profile_pic" placeholder="Photo" capture class="form-control">  -->
-                                    <input id="imageUpload" type="file" placeholder="photo" capture class="fom-control" name="display_pic" style="visibility: hidden;">
-
-                                    <!-- <div class="image-upload-box">
-                                        <label class="custom-file-upload">
-                                            <span><i class="icofont icofont-folder-open"></i> Browse Image</span> <input id="imageUpload" type="file" placeholder="photo" capture class="fom-control" name="display_pic">
-                                        </label>
-                                    </div> -->
+                                    <input id="imageUpload" type="file" placeholder="photo" capture class="fom-control" name="display_pic" style="visibility: hidden;"> -->
                                 </div>
                                 <!-- <div class="video-upload-inner">
                                     <div class="information-title">
@@ -401,5 +406,46 @@
         fasterPreview(this);
     });
             </script>
+
+{% block scripts %}
+<!-- input images  -->
+<script src="/static/js/image-uploader.min.js"></script>
+<!-- ...  -->
+{% endblock %}
+
+<!-- input images  -->
+<script>
+
+    $(function(){
+    
+        $('.input-images').imageUploader(
+        {
+        extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
+        mimes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
+        maxSize: undefined,
+        maxFiles: 15,
+    }
+        );
+    });
+    
+</script>
+<!-- ...  -->
+<!-- input images2  -->
+<script>
+
+    $(function(){
+    
+        $('.input-images2').imageUploader(
+        {
+        extensions: ['.jpg', '.jpeg', '.png', '.gif', '.svg'],
+        mimes: ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml'],
+        maxSize: undefined,
+        maxFiles: 1,
+    }
+        );
+    });
+    
+</script>
+<!-- ...  -->
             
 {% endblock %}

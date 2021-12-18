@@ -115,7 +115,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="/" class="brand-link">
+    <a href="/admin-dashboard" class="brand-link">
       <img src="{{ url_for('static', filename='AdminLTE-master/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Super-Admin</span>
     </a>
@@ -128,7 +128,7 @@
           <img src="{{ url_for('static', filename='AdminLTE-master/dist/img/logo.png') }}" class=" elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="/" class="d-block">Properties</a>
+          <a href="/" class="d-block">Go To Properties</a>
         </div>
       </div>
 
@@ -226,10 +226,26 @@
             </ul>
           </li>
           <li class="nav-item">
+            <a href="/featured-properties" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Featured Propeties
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="/messages" class="nav-link">
               <i class="nav-icon fas fa-envelope"></i>
               <p>
                 Messages
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/reviews" class="nav-link">
+              <i class="nav-icon fas fa-envelope"></i>
+              <p>
+                Reviews
               </p>
             </a>
           </li>

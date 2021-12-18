@@ -1,0 +1,127 @@
+{% extends 'admin-dashboard-layout.html' %}
+
+{% block head %}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reviews</title>
+
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="/static/AdminLTE-master/plugins/fontawesome-free/css/all.min.css">
+<!-- DataTables -->
+<link rel="stylesheet" href="/static/AdminLTE-master/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="/static/AdminLTE-master/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" href="/static/AdminLTE-master/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="/static/AdminLTE-master/dist/css/adminlte.min.css">
+{% endblock %}
+
+{% block header %}Reviews{% endblock %}
+
+{% block content %}
+
+<section class="content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+            <table id="example1" class="table table-bordered table-striped display" style="width:100%">
+              <thead>
+                <tr>
+                  <th>Property Id</th>
+                  <th>Name</th>
+                  <th>Feedback</th>
+                  <th>Time</th>
+                  <th>Profile Picture</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for review in reviews %}
+                <tr>
+                  <td>{{ review.property_id }}</td>
+                  <td>{{ review.name }}</td>
+                  <td>{{ review.feedback }}</td>
+                  <td>{{ review.time }}</td>
+                  <td><img src="/static/img/profile/{{review.profile_pic}}" width="81px" height="72px" alt="Not found"></td>
+                  <td>
+                    <a href="/delete-review/{{ review._id }}"><button onclick="return myFunction()" type="button"
+                        class="btn-outline-danger btn-sm btn-block">DELETE REVIEW</button>
+                    </a>
+                  </td>
+                </tr>
+                {% endfor %}
+
+                </tfoot>
+            </table>
+          </div>
+
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </div>
+  <!-- /.container-fluid -->
+</section>
+{% endblock %}
+
+{% block bodyscripts %}
+<!-- jQuery -->
+<script src="/static/AdminLTE-master/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/static/AdminLTE-master/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="/static/AdminLTE-master/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/static/AdminLTE-master/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/static/AdminLTE-master/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/static/AdminLTE-master/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/static/AdminLTE-master/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/static/AdminLTE-master/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+
+<script src="/static/AdminLTE-master/plugins/jszip/jszip.min.js"></script>
+<script src="/static/AdminLTE-master/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/static/AdminLTE-master/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/static/AdminLTE-master/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/static/AdminLTE-master/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/static/AdminLTE-master/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/static/AdminLTE-master/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/static/AdminLTE-master/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false, "scrollX": true,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+//   $(document).ready(function() {
+//     $('#example1').DataTable( {
+//         "scrollX": true, 
+//     } );
+// } );
+  
+</script>
+<script LANGUAGE="JavaScript">
+  function myFunction() {
+      var agree=confirm("Are you sure you want to proceed?");
+      if (agree)
+      return true ;
+      else
+      return false ;
+  }
+</script>
+{% endblock %}

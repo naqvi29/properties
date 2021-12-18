@@ -36,6 +36,7 @@
             <table id="example1" class="table table-bordered table-striped display" style="width:100%">
               <thead>
                 <tr>
+                  <th>Display</th>
                   <th>Title</th>
                   <th>Price</th>
                   <th>Desc</th>
@@ -61,6 +62,7 @@
               <tbody>
                 {% for property in properties %}
                 <tr>
+                  <td><img src="/static/img/property/{{property.display_pic}}" width="81px" height="72px" alt="Not found"></td>
                   <td>{{ property.title }}</td>
                   <td>{{ property.price }}</td>
                   <td>{{ property.desc }}</td>
