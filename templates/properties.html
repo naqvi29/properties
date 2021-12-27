@@ -47,7 +47,7 @@
                             </div>
                             <div class="property-desc">
                                 <div class="property-desc-top">
-                                    <h6><a href="/single-properties/{{property._id}}">{{property.title}}</a></h6>
+                                    <h6><a href="/single-properties/{{property._id}}">{{property.title | truncate(20)}}</a></h6>
                                     <h4 class="price">Rs {{property.price}}</h4>
                                     <div class="property-location">
                                         <p><img src="/static/img/property/icon-5.png" alt=""> {{property.address | truncate(20) }}</p>
@@ -96,7 +96,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="pagination">
-                            <div class="pagination-inner text-center">
+                            <div class="pagination-inner text-center">  
                                 <ul>
                                     <li class="prev"><a href="#"><i class="fa fa-angle-left"></i></a></li>
                                     <li class="current">1</li>

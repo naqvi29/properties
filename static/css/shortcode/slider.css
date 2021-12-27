@@ -46,7 +46,7 @@ NOTE: This is Header style file. Slider css style included in this file.
   text-transform: uppercase;
 }
 .title-2 h1 span {
-    color: #f9c322;
+    color: #45A29E;
 }
 .slide1-text .desc p {
     color: #ffffff;
@@ -54,7 +54,7 @@ NOTE: This is Header style file. Slider css style included in this file.
 }
 
 .slide1-text .contact-us a {
-    background: #004395 none repeat scroll 0 0;
+    background: #1F2833 none repeat scroll 0 0;
     color: #ffffff;
     display: inline-block !important;
     height: 40px;
@@ -65,8 +65,8 @@ NOTE: This is Header style file. Slider css style included in this file.
 }
 .slide1-text .contact-us a:hover {
   background: #ffffff none repeat scroll 0 0;
-  border-color: #004395;
-  color: #004395;
+  border-color: #1F2833;
+  color: #1F2833;
   border-color: #fff;
 }
 .slide1-text .title-2 {

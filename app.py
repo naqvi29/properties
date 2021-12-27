@@ -10,7 +10,6 @@ from os.path import join, dirname, realpath
 from werkzeug.utils import redirect, secure_filename
 from PIL import Image
 from flask_mail import Mail, Message
-import 
 
 app = Flask(__name__)
 
@@ -43,11 +42,11 @@ app.config['MAIL_DEFAULT_SENDER'] = ('property@globalcaregroup.net', "property@g
 mail = Mail(app)
 
 # test-mail 
-@app.route("/send")
-def send():
-    msg = Message("HELLO THIS IS FOR TESTING", recipients=["mali29april@gmail.com"])
-    mail.send(msg)
-    return "True"
+# @app.route("/send")
+# def send():
+#     msg = Message("HELLO THIS IS FOR TESTING", recipients=["mali29april@gmail.com"])
+#     mail.send(msg)
+#     return "True"
 
 
 # configure secret key for session
@@ -235,6 +234,22 @@ def login():
                     session['id'] = str(agentData['_id'])
                     session['username'] = agentData['username']
                     session['type'] = agentData['type']
+                    if agentData['profile_completed'] != True:
+                        # send notification
+                        header = {"Content-Type": "application/json; charset=utf-8",
+                        "Authorization": "Basic ZjE4MmU0ZTgtZDJkNi00NDgwLWJjOTUtZWMwYmQ1ZjVhNjUy"}
+
+                        payload = {"app_id": "89b19973-1108-4355-939f-b6791e9d84e6",
+                                "url":"https://property.globalcaregroup.net/myaccount/"+session['username']+"/msg",
+                                "include_external_user_ids": [str(session['username'])],
+                                "channel_for_external_user_ids": "push",
+                                "contents": {"en": "Complete Your Agent Profile"
+                                }}
+                        
+                        req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
+                        
+                        print(req.status_code, req.reason)
+                        # notification end 
                     return redirect(url_for('hello_world'))
                 else:
                     msg = "Invalid Password"
@@ -273,6 +288,22 @@ def login2():
                 session['id'] = str(agentData['_id'])
                 session['username'] = agentData['username']
                 session['type'] = agentData['type']
+                if agentData['profile_completed'] != True:
+                    # send notification
+                    header = {"Content-Type": "application/json; charset=utf-8",
+                    "Authorization": "Basic ZjE4MmU0ZTgtZDJkNi00NDgwLWJjOTUtZWMwYmQ1ZjVhNjUy"}
+
+                    payload = {"app_id": "89b19973-1108-4355-939f-b6791e9d84e6",
+                            "url":"https://property.globalcaregroup.net/myaccount/"+session['username']+"/msg",
+                            "include_external_user_ids": [str(session['username'])],
+                            "channel_for_external_user_ids": "push",
+                            "contents": {"en": "Complete Your Agent Profile"
+                            }}
+                    
+                    req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
+                    
+                    print(req.status_code, req.reason)
+                    # notification end 
                 return redirect(url_for('hello_world'))
             else:
                 msg = "Invalid Password"
@@ -323,7 +354,6 @@ def properties():
 
         i.update({"_id": str(i["_id"]),"total_views":total_views})
         lists.append(i)
-
     if 'loggedin' in session:
         if session['type'] != 'admin':
             return render_template("properties.html", properties=lists,username=session['username'])
@@ -599,6 +629,23 @@ def add_property():
                 query = {"title":title,"desc":desc,"timestamp":timestamp}
                 addedpropery = db.properties.find_one(query)
                 propertyid = str(addedpropery['_id'])
+                # send notification
+                header = {"Content-Type": "application/json; charset=utf-8",
+                "Authorization": "Basic ZjE4MmU0ZTgtZDJkNi00NDgwLWJjOTUtZWMwYmQ1ZjVhNjUy"}
+
+                payload = {"app_id": "89b19973-1108-4355-939f-b6791e9d84e6",
+                        "include_external_user_ids": [str(session['username'])],
+                        "channel_for_external_user_ids": "push",
+                        "contents": {"en": "Your Property is Live Now",
+                        "url":"https://property.globalcaregroup.net/single-properties/"+propertyid
+                        }}
+                
+                req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
+                
+                print(req.status_code, req.reason)
+
+                # notification end 
+
                 return redirect("/single-properties/"+ propertyid)
             else:
                 return render_template("add-property.html",username= session['username'])
@@ -988,7 +1035,7 @@ def contact_number_viewed():
         print(str(agentusername))
         print(str(agentfullname))
         print(str(username))
-        timestamp = datetime.now()
+        timestamp = datetime.now().strftime("%m/%d/%Y, %H:%M:%S")
         query = {"username":username}
         usersData = db.users.find_one(query)
         agentsData = db.agents.find_one(query)
@@ -1011,6 +1058,17 @@ def contact_number_viewed():
             "timestamp":timestamp,
             }
             db.agent_contact_number_views.insert_one(newValues)
+            # send notification
+            header = {"Content-Type": "application/json; charset=utf-8",
+            "Authorization": "Basic ZjE4MmU0ZTgtZDJkNi00NDgwLWJjOTUtZWMwYmQ1ZjVhNjUy"}
+            payload = {"app_id": "89b19973-1108-4355-939f-b6791e9d84e6",
+                    "include_external_user_ids": [str(agentusername)],
+                    "channel_for_external_user_ids": "push",
+                    "contents": {"en": "An Unknown person has viewed your contact number on " + timestamp
+                    }}        
+            req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
+            print(req.status_code, req.reason)
+            # notification end
             return "True"
 
 
@@ -1024,10 +1082,22 @@ def contact_number_viewed():
             "timestamp":timestamp,
         }
         db.agent_contact_number_views.insert_one(newValues)
+        # send notification
+        header = {"Content-Type": "application/json; charset=utf-8",
+        "Authorization": "Basic ZjE4MmU0ZTgtZDJkNi00NDgwLWJjOTUtZWMwYmQ1ZjVhNjUy"}
+        payload = {"app_id": "89b19973-1108-4355-939f-b6791e9d84e6",
+                "include_external_user_ids": [str(agentusername)],
+                "channel_for_external_user_ids": "push",
+                "contents": {"en": fullname+"has viewed your contact number on " + timestamp
+                }}        
+        req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
+        print(req.status_code, req.reason)
+        # notification end 
+
         return jsonify({"success":True})
 
     else:
-        return "Invalid request method zam"
+        return "Invalid request method"
     
 @app.route("/header-search", methods=['POST'])
 def header_search():
@@ -1610,6 +1680,8 @@ def delete_review(id):
             return redirect(url_for("admin_login"))
     else:
         return redirect(url_for("admin_login"))
+
+
 
 
 

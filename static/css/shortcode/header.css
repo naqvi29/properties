@@ -5,7 +5,7 @@ NOTE: This is Header style file. All Header related style included in this file.
 
 --------------------------------------*/
 .header-top {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   position: relative;
 }
 .header-menu ul li {
@@ -23,7 +23,7 @@ NOTE: This is Header style file. All Header related style included in this file.
   text-transform: uppercase;
 }
 .header-menu ul li:hover a {
-  color: #f9c322;
+  color: #45A29E;
 }
 .header-menu {
     text-align: right;
@@ -60,7 +60,7 @@ NOTE: This is Header style file. All Header related style included in this file.
     display: inline-block;
 }
 .add-property > a {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   border: 1px solid rgba(0, 0, 0, 0);
   color: #ffffff;
   display: inline-block;
@@ -71,8 +71,8 @@ NOTE: This is Header style file. All Header related style included in this file.
   padding: 0 12px;
 }
 .add-property > a:hover {
-  border-color: #f9c322;
-  color: #f9c322;
+  border-color: #45A29E;
+  color: #45A29E;
   background: inherit;
 }
 .logo > a {
@@ -88,7 +88,7 @@ NOTE: This is Header style file. All Header related style included in this file.
     Header top bar css here
 --------------*/
 .header-top-1 .haven-call > p {
-  color: #f9c322;
+  color: #45A29E;
   font-size: 14px;
 }
 .header-top-1 .haven-call {
@@ -107,7 +107,7 @@ NOTE: This is Header style file. All Header related style included in this file.
   position: relative;
 }
 .search-box-area {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   left: 0;
   position: fixed;
   top: 0;
@@ -139,7 +139,7 @@ NOTE: This is Header style file. All Header related style included in this file.
     font-size: 24px;
 }
 .search-close-btn > a:hover i {
-    color: #f9c322;
+    color: #45A29E;
     -webkit-transform: scale(1.5) rotate(180deg);
     -ms-transform: scale(1.5) rotate(180deg);
             transform: scale(1.5) rotate(180deg);
@@ -179,7 +179,7 @@ NOTE: This is Header style file. All Header related style included in this file.
     top: -2px;
 }
 .header-topbar-menu ul li a:hover {
-    color: #f9c322;
+    color: #45A29E;
 }
 .header-2 .header-menu ul li a {
   padding: 27px 0;
@@ -214,7 +214,7 @@ NOTE: This is Header style file. All Header related style included in this file.
           transform: translateY(-50%);
 }
 .home-map .haven-call p {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   color: #303030;
   display: inline-block;
   font-size: 16px;
@@ -285,7 +285,7 @@ NOTE: This is Header style file. All Header related style included in this file.
   text-transform: capitalize;
 }
 .header-menu ul li .dropdown_menu li a:hover {
-    color: #004395;
+    color: #1F2833;
 }
 .header-menu ul li .dropdown_menu li:last-child {
     border: medium none;
@@ -329,12 +329,12 @@ NOTE: This is Header style file. All Header related style included in this file.
   padding: 0 0 15px;
 }
 .header-menu ul li ul.mega_menu li ul li a:hover {
-  color: #f9c322;
+  color: #45A29E;
 }
 .header-menu ul li ul.mega_menu li a.title {
   border-bottom: 1px solid #ebebeb;
   margin-bottom: 20px;
-  color: #004395;
+  color: #1F2833;
 }
 .header-menu ul li ul.mega_menu li {
     display: block;
@@ -386,7 +386,7 @@ NOTE: This is Header style file. All Header related style included in this file.
 
 .logo img {
   margin-top: 15px;
-  width: 80px;
+  width: 80%;
 }
 
 

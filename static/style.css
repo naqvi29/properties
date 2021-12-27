@@ -97,7 +97,7 @@ img {
 }
 
 .find-home-title>h3 {
-  color: #004395;
+  color: #1F2833;
   font-size: 26px;
   font-weight: 700;
   line-height: 20px;
@@ -146,7 +146,7 @@ img {
 }
 
 .form-control {
-  border-color: #004395;
+  border-color: #1F2833;
   border-radius: 0;
 }
 
@@ -239,14 +239,14 @@ img {
 }
 
 .ui-slider .ui-slider-range {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   border-radius: 0;
 }
 
 .ui-state-default,
 .ui-widget-content .ui-state-default,
 .ui-widget-header .ui-state-default {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   border: medium none;
   border-radius: 50%;
   height: 17px;
@@ -262,7 +262,7 @@ img {
 }
 
 .find-home-item>button {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   border: 1px solid rgba(0, 0, 0, 0);
   color: #ffffff;
   font-weight: 400;
@@ -274,15 +274,15 @@ img {
 
 .find-home-item>button:hover {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  border-color: #f9c322;
-  color: #f9c322;
+  border-color: #45A29E;
+  color: #45A29E;
 }
 
 /*---------------------
     03. Property area css here
 ----------------*/
 .property-desc {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
 }
 
 .property-desc img {
@@ -291,7 +291,7 @@ img {
 }
 
 .property-desc-top h6 a:hover {
-  color: #f9c322;
+  color: #45A29E;
 }
 
 .property-bottom-list {
@@ -322,7 +322,7 @@ img {
 }
 
 .property-desc-top h4.price {
-  color: #f9c322;
+  color: #45A29E;
   font-size: 20px;
   margin-bottom: 0;
   position: absolute;
@@ -351,7 +351,7 @@ img {
 }
 
 .feature-property-title>h3 {
-  color: #004395;
+  color: #1F2833;
   font-size: 26px;
   line-height: 20px;
   margin: 0;
@@ -435,8 +435,8 @@ img {
 .property-list.owl-carousel .owl-nav>button:hover,
 .property_list.owl-carousel .owl-nav>button:hover,
 .happy-client-list.owl-carousel .owl-nav>button:hover {
-  background: #ffc400 none repeat scroll 0 0;
-  border-color: #ffc400;
+  background: #45A29E  none repeat scroll 0 0;
+  border-color: #45A29E ;
   color: #ffffff;
 }
 
@@ -472,14 +472,14 @@ img {
 
 .property-tab-menu ul li a:hover,
 .property-tab-menu ul li.active a {
-  color: #f9c322;
+  color: #45A29E;
 }
 
 /*-------------
     04. Welcome Haven css here
 ---------------*/
 .welcome-title .title-1 {
-  color: #004395;
+  color: #1F2833;
   font-size: 26px;
 }
 
@@ -489,11 +489,11 @@ img {
 
 .welcome-title .title-1 span,
 .welcome-title .title-2 span {
-  color: #f9c322;
+  color: #45A29E;
 }
 
 .welcome-title .title-2 {
-  color: #004395;
+  color: #1F2833;
   font-size: 22px;
   text-transform: uppercase;
 }
@@ -508,7 +508,7 @@ img {
 }
 
 .welcome-content>p span {
-  color: #f9c322;
+  color: #45A29E;
   font-size: 16px;
   font-weight: 400;
 }
@@ -575,7 +575,7 @@ img {
 .overlay-blue:before {
   position: absolute;
   content: "";
-  background: rgba(0, 67, 149, 0.95);
+  background: #1F2833;
   width: 100%;
   height: 100%;
   top: 0;
@@ -598,7 +598,7 @@ img {
 }
 
 .download-apps-title h3 {
-  color: #f9c322;
+  color: #45A29E;
   font-size: 26px;
 }
 
@@ -612,7 +612,7 @@ img {
 }
 
 .download-apps-bottom>a {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   border: 1px solid rgba(0, 0, 0, 0);
   color: #ffffff;
   display: inline-block;
@@ -624,8 +624,8 @@ img {
 
 .download-apps-bottom>a:hover {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  border-color: #f9c322;
-  color: #f9c322;
+  border-color: #45A29E;
+  color: #45A29E;
 }
 
 .download-apps-title h3.title-2 {
@@ -641,7 +641,7 @@ img {
 }
 
 .section-title h3 {
-  color: #004395;
+  color: #1F2833;
   font-size: 26px;
   line-height: 20px;
   margin-bottom: 18px;
@@ -680,7 +680,7 @@ img {
 }
 
 .single-property>span {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   color: #ffffff;
   height: 28px;
   left: 16px;
@@ -694,7 +694,7 @@ img {
 }
 
 .single-property span.bg-blue {
-  background: #15539e none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
 }
 
 /*-------------
@@ -856,7 +856,7 @@ img {
 }
 
 .fun-icon i {
-  color: #f9c322;
+  color: #45A29E;
   font-size: 40px;
   line-height: 36px;
 }
@@ -961,8 +961,8 @@ img {
 }
 
 .team-member-social>a:hover {
-  background: #004395 none repeat scroll 0 0;
-  border-color: #004395;
+  background: #1F2833 none repeat scroll 0 0;
+  border-color: #1F2833;
   color: #ffffff;
 }
 
@@ -1005,9 +1005,9 @@ img {
 }
 
 .blog-post span {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   display: block;
-  color: #004395;
+  color: #1F2833;
   text-align: center;
   width: 51px;
   margin-bottom: 5px;
@@ -1052,7 +1052,7 @@ img {
 }
 
 .bolg-continue>a {
-  color: #f9c322;
+  color: #45A29E;
   display: block;
   font-weight: 400;
   padding-bottom: 16px;
@@ -1063,7 +1063,7 @@ img {
 }
 
 .blog-desc h6 a:hover {
-  color: #f9c322;
+  color: #45A29E;
 }
 
 .bolg-continue>a:hover {
@@ -1091,7 +1091,7 @@ img {
 }
 
 .review-desc>p span {
-  color: #004395;
+  color: #1F2833;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -1164,7 +1164,7 @@ img {
     13. Footer css here     
 ---------------------*/
 .singe-footer-newsletter {
-  background: rgba(0, 67, 149, 0.85) none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   float: left;
   height: 100%;
   position: absolute;
@@ -1177,7 +1177,7 @@ img {
 }
 
 .single-footer-contact {
-  background: rgba(0, 67, 149, 0.85) none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   float: right;
   height: 100%;
   padding: 47px 43px;
@@ -1206,7 +1206,7 @@ img {
 }
 
 .f-logo>a {
-  background: #ffffff none repeat scroll 0 0;
+  /* background: #ffffff none repeat scroll 0 0; */
   display: inline-block;
   height: 112px;
   line-height: 110px;
@@ -1291,7 +1291,7 @@ img {
 }
 
 .footer-bottom {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
 }
 
 .footer-menu li {
@@ -1313,7 +1313,7 @@ img {
 }
 
 .footer-menu li a:hover {
-  color: #f9c322;
+  color: #45A29E;
 }
 
 .copyright>p {
@@ -1326,7 +1326,7 @@ img {
 }
 
 .copyright>p a {
-  color: #f9c322;
+  color: #45A29E;
   font-weight: 500;
   text-transform: capitalize;
 }
@@ -1386,11 +1386,11 @@ img {
 .find-home-bottom .ui-state-default,
 .find-home-bottom .ui-widget-content .ui-state-default,
 .find-home-bottom .ui-widget-header .ui-state-default {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
 }
 
 .find-home-bottom .ui-slider .ui-slider-range {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
 }
 
 .find-home-bottom .price_slider_amount>input:first-child {
@@ -1426,7 +1426,7 @@ img {
 .find-home-box-inner .btn-default.focus:active,
 .find-home-box-inner .btn-default.active.focus,
 .find-home-box-inner.open>.dropdown-toggle.btn-default.focus {
-  color: #f9c322;
+  color: #45A29E;
 }
 
 .no-caret .bootstrap-select>.dropdown-toggle::before {
@@ -1489,7 +1489,7 @@ img {
 }
 
 .find-home-box {
-  border-bottom: 4px solid #f9c322;
+  border-bottom: 4px solid #45A29E;
 }
 
 .find-home-box.fadeOut {
@@ -1508,7 +1508,7 @@ img {
 }
 
 .close-home:hover {
-  color: #f9c322;
+  color: #45A29E;
 }
 
 /*-------------
@@ -1551,7 +1551,7 @@ img {
 }
 
 .single_property_inner>h4 a:hover {
-  color: #f9c322;
+  color: #45A29E;
 }
 
 .single_property_inner>p {
@@ -1574,7 +1574,7 @@ img {
     17. Scrollup css here
 ---------------*/
 #scrollUp {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   bottom: 45px;
   color: #ffffff;
   cursor: pointer;
@@ -1590,7 +1590,7 @@ img {
 }
 
 #scrollUp:hover {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
 }
 
 /*--------------
@@ -1642,7 +1642,7 @@ img {
 }
 
 .breadcrumbs-menu li a:hover {
-  color: #f9c322;
+  color: #45A29E;
 }
 
 /*---------------
@@ -1667,8 +1667,8 @@ img {
 .pagination-inner li a:hover,
 .pagination-inner li.current {
   color: #fff;
-  background: #ffc400;
-  border-color: #ffc400;
+  background: #45A29E ;
+  border-color: #45A29E ;
 }
 
 .pagination-inner li {
@@ -1707,7 +1707,7 @@ img {
 }
 
 .aside-title h5 {
-  color: #004395;
+  color: #1F2833;
   line-height: 20px;
   margin: 0;
   padding-bottom: 10px;
@@ -1720,7 +1720,7 @@ img {
 }
 
 .aside-title h5::before {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   bottom: 0;
   content: "";
   height: 3px;
@@ -1790,8 +1790,8 @@ img {
 }
 
 .our-tag-list li a:hover {
-  background: #f9c322 none repeat scroll 0 0;
-  border-color: #f9c322;
+  background: #45A29E none repeat scroll 0 0;
+  border-color: #45A29E;
   color: #ffffff;
 }
 
@@ -1913,7 +1913,7 @@ aside.single-side-box.agent .our-agent-sidbar {
 }
 
 .list_property .property-desc-top h6 {
-  color: #004395;
+  color: #1F2833;
   font-weight: 400;
   line-height: 16px;
   margin-bottom: 6px;
@@ -1991,7 +1991,7 @@ aside.single-side-box.agent .our-agent-sidbar {
 }
 
 .description-inner p span {
-  color: #f9c322;
+  color: #45A29E;
   font-weight: 400;
 }
 
@@ -2226,7 +2226,7 @@ aside.single-side-box.agent .our-agent-sidbar {
 }
 
 .submit-form>button {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   border: 1px solid rgba(0, 0, 0, 0);
   color: #ffffff;
   font-weight: 400;
@@ -2239,8 +2239,8 @@ aside.single-side-box.agent .our-agent-sidbar {
 
 .submit-form>button:hover {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  border-color: #f9c322;
-  color: #f9c322;
+  border-color: #45A29E;
+  color: #45A29E;
 }
 
 /*-------------
@@ -2276,7 +2276,7 @@ aside.single-side-box.agent .our-agent-sidbar {
 }
 
 .agent-text>p span.yellow {
-  color: #f9c322;
+  color: #45A29E;
   font-weight: 400;
 }
 
@@ -2286,7 +2286,7 @@ aside.single-side-box.agent .our-agent-sidbar {
 }
 
 .biography-title>h5 {
-  color: #004395;
+  color: #1F2833;
   font-weight: 400;
   margin-bottom: 18px;
 }
@@ -2310,7 +2310,7 @@ aside.single-side-box.agent .our-agent-sidbar {
 }
 
 .contact-title>h5 {
-  color: #004395;
+  color: #1F2833;
   font-size: 20px;
   font-weight: 400;
   margin-bottom: 20px;
@@ -2366,14 +2366,14 @@ aside.single-side-box.agent .our-agent-sidbar {
 }
 
 .contact-social a:hover {
-  background: #f9c322 none repeat scroll 0 0;
-  border-color: #f9c322;
+  background: #45A29E none repeat scroll 0 0;
+  border-color: #45A29E;
   color: #ffffff;
 }
 
 .working-title>h5,
 .contact-inquiry-title>h5 {
-  color: #004395;
+  color: #1F2833;
   font-size: 20px;
   font-weight: 400;
   text-transform: capitalize;
@@ -2457,7 +2457,7 @@ aside.single-side-box.agent .our-agent-sidbar {
 
 .aside_title h5 {
   border-bottom: 1px solid #cccccc;
-  color: #004395;
+  color: #1F2833;
   font-weight: 400;
   line-height: 20px;
   margin: 0;
@@ -2497,7 +2497,7 @@ aside.single-side-box.agent .our-agent-sidbar {
 
 .categories-list li a:hover,
 .archive-list ul li a:hover {
-  color: #f9c322;
+  color: #45A29E;
 }
 
 .recent-post-desc {
@@ -2560,7 +2560,7 @@ aside.single-side-box.agent .our-agent-sidbar {
 }
 
 .latest-tweet>p a {
-  color: #f9c322;
+  color: #45A29E;
   font-size: 15px;
   font-weight: 400;
 }
@@ -2580,7 +2580,7 @@ aside.single-side-box.agent .our-agent-sidbar {
 }
 
 .guide-title>h6 {
-  color: #004395;
+  color: #1F2833;
   display: inline-block;
   font-weight: 400;
   margin-bottom: 0;
@@ -2781,7 +2781,7 @@ article blockquote {
 }
 
 .reply-button>a:hover {
-  color: #004395;
+  color: #1F2833;
 }
 
 .single-comment-box.reply-comment {
@@ -2874,7 +2874,7 @@ article blockquote {
 }
 
 .package-title {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   transition: all 0.3s ease 0s;
 }
 
@@ -2905,7 +2905,7 @@ article blockquote {
 }
 
 .package-select>button {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   border: medium none;
   color: #ffffff;
   display: inline-block;
@@ -2923,14 +2923,14 @@ article blockquote {
 
 .single-package:hover .package-title,
 .single-package:hover .package-select button {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
 }
 
 /*------------
    26. Add property css here
 -----------------*/
 .step-title h4 {
-  color: #004395;
+  color: #1F2833;
   font-size: 24px;
   font-weight: 400;
   line-height: 28px;
@@ -2940,7 +2940,7 @@ article blockquote {
 }
 
 .step-title h4::before {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   bottom: 0;
   content: "";
   height: 2px;
@@ -2998,7 +2998,7 @@ article blockquote {
 
 .image-upload-box .custom-file-upload,
 .video-upload-box .custom-video-upload {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   color: #ffffff;
   height: 45px;
   line-height: 43px;
@@ -3096,7 +3096,7 @@ article blockquote {
 }
 
 .add-property-submit>button {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   border: medium none;
   color: #ffffff;
   font-weight: 400;
@@ -3172,7 +3172,7 @@ article blockquote {
 }
 
 .contact-form-inner button {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   border: 1px solid rgba(0, 0, 0, 0);
   color: #ffffff;
   height: 40px;
@@ -3185,8 +3185,8 @@ article blockquote {
 
 .contact-form-inner button:hover {
   background: none;
-  border-color: #f9c322;
-  color: #f9c322;
+  border-color: #45A29E;
+  color: #45A29E;
 }
 
 .form-submit {
@@ -3284,7 +3284,7 @@ article blockquote {
 
 .register>button,
 .login>button {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   border: medium none;
   color: #ffffff;
   display: inline-block;
@@ -3296,7 +3296,7 @@ article blockquote {
   transition: all 0.3s ease 0s;
 }
 .register2>a>button {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   border: medium none;
   color: #000000;
   display: inline-block;
@@ -3392,7 +3392,7 @@ article blockquote {
 
 .modal-header {
   border: 1px solid #dbdbdb;
-  color: #004395;
+  color: #1F2833;
   cursor: pointer;
   height: 30px;
   line-height: 28px;
@@ -3420,7 +3420,7 @@ article blockquote {
     29. 404 page css here
 -------------------------*/
 .error-content h2 {
-  color: #004395;
+  color: #1F2833;
   font-size: 180px;
   font-weight: bold;
   letter-spacing: 10px;
@@ -3445,7 +3445,7 @@ article blockquote {
 }
 
 .error-content .go-home {
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   color: #fff;
   display: inline-block;
   font-weight: bold;
@@ -3455,7 +3455,7 @@ article blockquote {
 }
 
 .error-content .go-home:hover {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
 }
 
 /*----------------
@@ -3470,7 +3470,7 @@ article blockquote {
 }
 
 .profile_name>label {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   color: #ffffff;
   cursor: pointer;
   display: block;
@@ -3482,7 +3482,7 @@ article blockquote {
 }
 
 .profile-title>h5 {
-  color: #004395;
+  color: #1F2833;
   font-weight: 500;
   line-height: 16px;
   margin: 0;
@@ -3520,7 +3520,7 @@ article blockquote {
 }
 
 .update-profile-submit>button {
-  background: #f9c322 none repeat scroll 0 0;
+  background: #45A29E none repeat scroll 0 0;
   border: medium none;
   color: #ffffff;
   font-size: 16px;
@@ -3602,7 +3602,7 @@ article blockquote {
 .elements .nav-tabs>li.active>a {
   border-radius: 0;
   border-top: 1px solid transparent;
-  color: #004395;
+  color: #1F2833;
 }
 
 .elements .nav.nav-tabs {
@@ -3650,7 +3650,7 @@ article blockquote {
 }
 
 .our-skill .progress-bar {
-  background-color: #004395;
+  background-color: #1F2833;
   box-shadow: none;
 }
 
@@ -4019,7 +4019,7 @@ button {
 /* Section Title */
 
 .section-title-2 h3{
-  color: #004395;
+  color: #1F2833;
   text-transform: capitalize;
 }
 .section-title-2 h3 span.inactive-title{
@@ -4135,14 +4135,14 @@ button {
   text-transform: uppercase;
 }
 .slider-content h1 span{
-  color: #f9c322;
+  color: #45A29E;
 }
 .slider-content p{
   color: #ffffff;
   font-size: 16px;
 }
 .slider-content .btn{
-  background: #004395 none repeat scroll 0 0;
+  background: #1F2833 none repeat scroll 0 0;
   color: #ffffff;
   display: inline-block !important;
   height: 40px;
@@ -4153,7 +4153,7 @@ button {
 }
 .slider-content .btn:hover{
   background-color: #fff;
-  color: #004395;
+  color: #1F2833;
 }
 .slider-overlay{
   position: relative;
@@ -4210,7 +4210,7 @@ button {
   padding-bottom: 10px;
 }
 .property__title{
-  background-color: #004395;
+  background-color: #1F2833;
   color: #fff;
   font-size: 15px;
   padding: 8px 0;
@@ -4235,7 +4235,7 @@ button {
   text-align: center;
 }
 .featured-property__title{
-  color: #004395;
+  color: #1F2833;
   font-weight: 900;
   font-size: 40px;
 }
@@ -4245,7 +4245,7 @@ button {
   margin-bottom: 5px;
 }
 .featured-property__price{
-  color: #004395;
+  color: #1F2833;
   margin-bottom: 20px;
 }
 
@@ -4275,7 +4275,7 @@ button {
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: #004395;
+  background-color: #1F2833;
   text-align: center;
   color: #fff;
   padding: 12px 0;
@@ -4303,7 +4303,7 @@ button {
   position: absolute;
   right: 0;
   top: 30px;
-  background-color: #004395;
+  background-color: #1F2833;
   color: #fff;
   font-weight: 500;
   font-size: 16px;
@@ -4336,7 +4336,7 @@ button {
   top: 0
 }
 .feature__icon i{
-  color: #004395;
+  color: #1F2833;
   font-size: 35px;
 }
 .feature__title{
@@ -4379,7 +4379,7 @@ button {
   width: 100%;
   text-align: center;
   background: #fff;
-  color: #004395;
+  color: #1F2833;
   font-size: 24px;
   padding: 20px 0;
   font-weight: bold;
@@ -4426,7 +4426,7 @@ button {
 .curve-badge span{
   display: inline-block;
   padding: 10px 15px;
-  background-color: #004395;
+  background-color: #1F2833;
   color: #fff;
   font-size: 20px;
   font-weight: 700;
@@ -4529,7 +4529,7 @@ button {
   margin-bottom: 15px;
 }
 .read-more{
-  color: #004395;
+  color: #1F2833;
 }
 
 /* Home 11 CSS */
@@ -4582,7 +4582,7 @@ button {
   -moz-transform: rotateY(180deg);
   -ms-transform: rotateY(180deg);
   -o-transform: rotateY(180deg);
-  background: #004395;
+  background: #1F2833;
 }
 .flip-card-front{
   background-color: #fafafa;
@@ -4619,7 +4619,7 @@ button {
 }
 .property.flip-card .property__info{
   padding-top: 45px;
-  background: #004395;
+  background: #1F2833;
   width: 100%;
   height: 100%;
 }
@@ -4640,7 +4640,7 @@ button {
   text-align: left;
 }
 .property.flip-card .property__info-top h4{
-    color: #f9c322;
+    color: #45A29E;
     font-size: 20px;
     margin-bottom: 0;
     position: absolute;
@@ -4679,7 +4679,7 @@ button {
   padding-left: 10px;
 }
 .property.flip-card .property__price{
-  color: #f9c322;
+  color: #45A29E;
   font-size: 20px;
   text-align: left;
 }
